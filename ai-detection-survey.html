@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Detection Survey - Pilot</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #fef9f3 0%, #fff5eb 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #2d1810;
+            margin-bottom: 24px;
+            font-size: 28px;
+        }
+        
+        h2 {
+            color: #2d1810;
+            margin: 24px 0 16px 0;
+            font-size: 22px;
+        }
+        
+        h3 {
+            color: #7a5c4e;
+            margin: 20px 0 12px 0;
+            font-size: 18px;
+        }
+        
+        p {
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+        
+        .passage-container {
+            background: #f8f5f0;
+            padding: 24px;
+            border-radius: 8px;
+            margin: 20px 0;
+            line-height: 2;
+        }
+        
+        .sentence {
+            cursor: pointer;
+            padding: 3px 2px;
+            transition: all 0.3s ease;
+            user-select: none;
+            display: inline;
+        }
+        
+        .sentence:hover {
+            background: rgba(255, 216, 155, 0.3);
+        }
+        
+        .sentence.highlighted {
+            background: linear-gradient(120deg, #ffd89b 0%, #ffb347 100%);
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(255, 168, 77, 0.3);
+        }
+        
+        .counter {
+            text-align: center;
+            margin: 16px 0;
+            color: #c66a13;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .slider-container {
+            margin: 24px 0;
+        }
+        
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e8d4c4;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #ff6b35;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+        }
+        
+        .slider::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #ff6b35;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+        }
+        
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 14px;
+            color: #7a5c4e;
+        }
+        
+        .slider-value {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff6b35;
+            margin: 12px 0;
+        }
+        
+        .radio-group {
+            margin: 16px 0;
+        }
+        
+        .radio-option {
+            display: block;
+            margin: 12px 0;
+            padding: 12px;
+            border: 2px solid #e8d4c4;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .radio-option:hover {
+            border-color: #ff6b35;
+            background: #fff5eb;
+        }
+        
+        .radio-option input {
+            margin-right: 12px;
+        }
+        
+        .radio-option.selected {
+            border-color: #ff6b35;
+            background: #fff5eb;
+        }
+        
+        .checkbox-group {
+            margin: 16px 0;
+        }
+        
+        .checkbox-option {
+            display: block;
+            margin: 12px 0;
+            padding: 12px;
+            border: 2px solid #e8d4c4;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .checkbox-option:hover {
+            background: #fff5eb;
+        }
+        
+        .checkbox-option input {
+            margin-right: 12px;
+        }
+        
+        .checkbox-option.selected {
+            background: #fff5eb;
+            border-color: #ff9a56;
+        }
+        
+        textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 12px;
+            border: 2px solid #e8d4c4;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+            resize: vertical;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #ff6b35;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e8d4c4;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+        
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #ff6b35;
+        }
+        
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e8d4c4;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+            background: white;
+            cursor: pointer;
+        }
+        
+        select:focus {
+            outline: none;
+            border-color: #ff6b35;
+        }
+        
+        button {
+            padding: 14px 32px;
+            background: linear-gradient(135deg, #ff9a56 0%, #ff6b35 100%);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 16px rgba(255, 107, 53, 0.3);
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+        
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 16px;
+            margin-top: 32px;
+        }
+        
+        .secondary-button {
+            background: white;
+            color: #7a5c4e;
+            border: 2px solid #e8d4c4;
+            box-shadow: none;
+        }
+        
+        .secondary-button:hover {
+            border-color: #c66a13;
+            background: white;
+        }
+        
+        .progress {
+            background: #e8d4c4;
+            height: 8px;
+            border-radius: 4px;
+            margin: 24px 0;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff9a56 0%, #ff6b35 100%);
+            transition: width 0.3s ease;
+        }
+        
+        .info-box {
+            background: #fff5eb;
+            border-left: 4px solid #ff6b35;
+            padding: 16px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .likert-scale {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            margin: 20px 0;
+        }
+        
+        .likert-option {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .likert-option input[type="radio"] {
+            display: block;
+            margin: 0 auto 8px auto;
+            cursor: pointer;
+        }
+        
+        .likert-option label {
+            font-size: 13px;
+            color: #7a5c4e;
+            display: block;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .likert-scale {
+                flex-direction: column;
+            }
+            
+            .likert-option {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+            
+            .likert-option input[type="radio"] {
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // PASTE YOUR GOOGLE APPS SCRIPT URL HERE
+        const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+
+        // PASSAGES DATA
+        const PASSAGES = [
+            {
+                id: 'p1a',
+                type: 'Pure student writing',
+                topic: 'Social Media',
+                level: 'CEFR B1',
+                sentences: [
+                    'Social media is very popular in these days especially young people.',
+                    'I think it have both good point and bad point.',
+                    'First, we can communication with friend who live far away very easily.',
+                    'My friend is study in Australia now, but we can talk everyday by Instagram.',
+                    'However, there is also problem.',
+                    'Many people spending too much time for check their phone and they don\'t talk face to face anymore.',
+                    'In my opinion, social media is useful tool but we should be careful to not use it too much time.'
+                ]
+            },
+            {
+                id: 'p1b',
+                type: 'Pure student writing',
+                topic: 'Work Stress',
+                level: 'CEFR B1',
+                sentences: [
+                    'In modern society, many people has stress from their work.',
+                    'I think there are several reason for this.',
+                    'First reason is they must working very long hour.',
+                    'In Japan, overtime work is normal thing and people cannot go home until very late.',
+                    'Second, the relationship with boss or colleague is sometimes difficult.',
+                    'If you have a trouble with other people in office, you feel stress everyday.',
+                    'So company should think about how to make better work environment for employee.'
+                ]
+            },
+            {
+                id: 'p2a',
+                type: '100% MT',
+                topic: 'Environment',
+                level: 'CEFR B1',
+                sentences: [
+                    'Regarding the problem of environmental destruction, it is necessary to think deeply.',
+                    'In recent years, the situation of the earth is becoming severe increasingly.',
+                    'For example, the problem of global warming is advancing, and abnormal weather is occurring frequently.',
+                    'In addition, regarding plastic garbage, it is said that it has become a big problem in the ocean.',
+                    'We must take action immediately.',
+                    'Each person should have awareness and cooperate.',
+                    'By doing small things in daily life, we can protect the future of the earth.'
+                ]
+            },
+            {
+                id: 'p2b',
+                type: '100% MT',
+                topic: 'Social Media',
+                level: 'CEFR B1',
+                sentences: [
+                    'Concerning the influence of SNS on young people, there are various opinions.',
+                    'On one hand, it is convenient to be able to connect with people far away.',
+                    'On the other hand, the problem that mental health worsens is pointed out.',
+                    'Especially, by comparing with others, there is a tendency to lose confidence.',
+                    'Furthermore, regarding the problem of dependence, there is concern.',
+                    'In order to use SNS in a healthy way, it is important to decide rules by oneself and keep balance.'
+                ]
+            },
+            {
+                id: 'p3a',
+                type: '100% AI',
+                topic: 'Social Media',
+                level: 'CEFR B1',
+                sentences: [
+                    'The proliferation of social media platforms has fundamentally transformed interpersonal communication in contemporary society.',
+                    'While these digital tools offer unprecedented opportunities for global connectivity and information exchange, they simultaneously present significant challenges to traditional face-to-face interaction.',
+                    'Research indicates that excessive screen time correlates with diminished emotional intelligence and reduced capacity for nuanced social cues.',
+                    'Nevertheless, when utilized judiciously, social media can facilitate meaningful connections across geographical boundaries and foster communities united by shared interests and values.'
+                ]
+            },
+            {
+                id: 'p3b',
+                type: '100% AI',
+                topic: 'Environment',
+                level: 'CEFR B1',
+                sentences: [
+                    'Environmental sustainability represents one of the most pressing challenges confronting humanity in the twenty-first century.',
+                    'The accumulation of greenhouse gases in the atmosphere, coupled with widespread deforestation and ocean acidification, threatens the delicate ecological balance upon which all life depends.',
+                    'Addressing this crisis requires comprehensive policy reforms, technological innovation, and fundamental shifts in consumer behavior.',
+                    'Individual actions, though seemingly modest in isolation, collectively contribute to meaningful change when adopted on a societal scale.'
+                ]
+            },
+            {
+                id: 'p4a',
+                type: 'Human + MT',
+                topic: 'Healthy Lifestyle',
+                level: 'CEFR B1',
+                sentences: [
+                    'Recently I am very interesting in healthy lifestyle.',
+                    'I try to exercise three time a week and eat more vegetable.',
+                    'Regarding the matter of maintaining physical condition, it is essential to establish regular habits and adhere to them consistently.',
+                    'Also I think sleep is important too.',
+                    'Before I only sleep five or six hour, but now I trying to sleep at least seven hour every night.',
+                    'My friend say I look more energy than before.'
+                ]
+            },
+            {
+                id: 'p4b',
+                type: 'Human + MT',
+                topic: 'Kyoto Trip',
+                level: 'CEFR B1',
+                sentences: [
+                    'Last summer I went to Kyoto with my family for vacation.',
+                    'We visit many famous temple and shrine and took a lot of picture.',
+                    'Concerning the historical significance of traditional Japanese architecture, it can be said that the preservation of cultural heritage sites contributes substantially to educational value for future generations.',
+                    'The food in Kyoto was really delicious especially the matcha dessert.',
+                    'I want to go there again next year because there still many place I didn\'t visited.',
+                    'It was very good experience for me.'
+                ]
+            },
+            {
+                id: 'p5a',
+                type: 'Human + AI',
+                topic: 'Study Abroad',
+                level: 'CEFR B1',
+                sentences: [
+                    'I think university students should studying abroad if they have chance.',
+                    'When I went to Canada for one month, I learned many thing.',
+                    'The ability to adapt to unfamiliar environments and navigate cultural differences represents an invaluable skill set that extends far beyond mere language acquisition.',
+                    'Also I made friend from different country and we still keep in touch now.',
+                    'This experience help me to understand different culture better and I become more confident to speak English.'
+                ]
+            },
+            {
+                id: 'p5b',
+                type: 'Human + AI',
+                topic: 'Online Shopping',
+                level: 'CEFR B1',
+                sentences: [
+                    'Online shopping is becoming more popular in Japan.',
+                    'I often buy thing on Amazon or Rakuten because it very convenient.',
+                    'The seamless integration of e-commerce platforms into daily life has fundamentally altered consumer behavior and retail dynamics across diverse demographic segments.',
+                    'But sometime the product is different from photo or the size is not correct.',
+                    'So I think it better to go to real shop for important thing like clothes or shoes what you want to wear for long time.'
+                ]
+            },
+            {
+                id: 'p6a',
+                type: 'AI-polished',
+                topic: 'Social Media',
+                level: 'CEFR B1',
+                sentences: [
+                    'Social media has become an essential part of modern life, especially for young people.',
+                    'I think it has both advantages and disadvantages.',
+                    'First, we can communicate with friends who live far away very easily.',
+                    'My friend is studying in Australia now, but we can talk every day through Instagram.',
+                    'However, there are also problems.',
+                    'Many people spend too much time checking their phones, and they don\'t talk face to face anymore.',
+                    'In my opinion, social media is a useful tool, but we should be careful not to use it excessively.'
+                ]
+            },
+            {
+                id: 'p6b',
+                type: 'AI-polished',
+                topic: 'Work Stress',
+                level: 'CEFR B1',
+                sentences: [
+                    'In modern society, many people experience stress from their work.',
+                    'I think there are several reasons for this.',
+                    'The first reason is that they must work very long hours.',
+                    'In Japan, overtime work is normal, and people cannot go home until very late.',
+                    'Second, relationships with bosses or colleagues are sometimes difficult.',
+                    'If you have trouble with other people in the office, you feel stress every day.',
+                    'Therefore, companies should think about how to create a better work environment for employees.'
+                ]
+            }
+        ];
+
+        // Passage highlighting component
+        function PassageHighlighter({ passage, onHighlightChange }) {
+            const [highlighted, setHighlighted] = useState(new Set());
+
+            // Reset highlights when passage changes
+            useEffect(() => {
+                setHighlighted(new Set());
+                onHighlightChange([]);
+            }, [passage.id]);
+
+            const toggleHighlight = (index) => {
+                setHighlighted(prev => {
+                    const newSet = new Set(prev);
+                    if (newSet.has(index)) {
+                        newSet.delete(index);
+                    } else {
+                        newSet.add(index);
+                    }
+                    onHighlightChange(Array.from(newSet).sort((a, b) => a - b));
+                    return newSet;
+                });
+            };
+
+            const clearSelection = () => {
+                setHighlighted(new Set());
+                onHighlightChange([]);
+            };
+
+            const selectAll = () => {
+                const allIndices = new Set(passage.sentences.map((_, idx) => idx));
+                setHighlighted(allIndices);
+                onHighlightChange(Array.from(allIndices));
+            };
+
+            return (
+                <div>
+                    <div style={{ background: '#f8f5f0', padding: '16px', borderRadius: '8px', marginBottom: '16px' }}>
+                        <div style={{ fontSize: '14px', color: '#7a5c4e', fontWeight: '600' }}>
+                            Student Level: {passage.level} | Topic: {passage.topic}
+                        </div>
+                    </div>
+                    <div style={{ marginBottom: '16px', padding: '16px', background: '#fff5eb', borderRadius: '8px', borderLeft: '4px solid #ff6b35' }}>
+                        <p style={{ marginBottom: '0', fontWeight: '600', color: '#2d1810', lineHeight: '1.6' }}>
+                            Read the passage below and complete the <strong>three</strong> tasks. Please add optional comments if you can.
+                        </p>
+                    </div>
+                    <h3 style={{ marginBottom: '8px' }}><strong>1.</strong> Click on any sentences you think are machine-generated.</h3>
+                    <p style={{ fontSize: '14px', color: '#7a5c4e', marginBottom: '16px', lineHeight: '1.6' }}>
+                        These are sentences which have been written by a machine (e.g. ChatGPT, Google Translate) and not by a Japanese EFL student. If the text is entirely human, leave the selection blank.
+                    </p>
+                    <div className="passage-container">
+                        {passage.sentences.map((sentence, index) => (
+                            <span key={index}>
+                                <span
+                                    className={`sentence ${highlighted.has(index) ? 'highlighted' : ''}`}
+                                    onClick={() => toggleHighlight(index)}
+                                >
+                                    {sentence}
+                                </span>
+                                {index < passage.sentences.length - 1 && ' '}
+                            </span>
+                        ))}
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '16px 0', padding: '14px 20px', background: 'linear-gradient(135deg, #ffd89b 0%, #ffb347 100%)', borderRadius: '8px', border: '2px solid #ff9a56', boxShadow: '0 3px 10px rgba(255, 154, 86, 0.3)' }}>
+                        <button 
+                            className="secondary-button" 
+                            onClick={selectAll}
+                            disabled={highlighted.size === passage.sentences.length}
+                            style={{ padding: '8px 16px', fontSize: '14px' }}
+                        >
+                            Select all
+                        </button>
+                        <div style={{ color: '#8b4513', fontWeight: '700', fontSize: '18px' }}>
+                            ✓ {highlighted.size} {highlighted.size === 1 ? 'sentence' : 'sentences'} marked
+                        </div>
+                        <button 
+                            className="secondary-button" 
+                            onClick={clearSelection}
+                            disabled={highlighted.size === 0}
+                            style={{ padding: '8px 16px', fontSize: '14px' }}
+                        >
+                            Clear selection
+                        </button>
+                    </div>
+                </div>
+            );
+        }
+
+        // Main Survey App
+        function SurveyApp() {
+            const [page, setPage] = useState('welcome');
+            const [demographics, setDemographics] = useState({
+                l1: '',
+                l1_other: '',
+                experience: '',
+                background: ''
+            });
+            const [selectedPassages, setSelectedPassages] = useState([]);
+            const [currentPassageIndex, setCurrentPassageIndex] = useState(0);
+            const [passageResponses, setPassageResponses] = useState({});
+            const [reflection, setReflection] = useState({
+                technical: '',
+                representative: '',
+                understanding: [],
+                time: '',
+                feedback: ''
+            });
+
+            useEffect(() => {
+                // Randomly select 5 passages when survey starts
+                if (page === 'demographics' && selectedPassages.length === 0) {
+                    const shuffled = [...PASSAGES].sort(() => Math.random() - 0.5);
+                    setSelectedPassages(shuffled.slice(0, 5));
+                }
+            }, [page]);
+
+            const handleDemographicsSubmit = () => {
+                if (demographics.l1 && demographics.experience) {
+                    if (demographics.l1 === 'Other' && !demographics.l1_other) {
+                        alert('Please specify your first language');
+                        return;
+                    }
+                    setPage('passages');
+                }
+            };
+
+            const handlePassageSubmit = () => {
+                const currentPassage = selectedPassages[currentPassageIndex];
+                if (passageResponses[currentPassage.id] && 
+                    passageResponses[currentPassage.id].classification) {
+                    if (currentPassageIndex < selectedPassages.length - 1) {
+                        setCurrentPassageIndex(currentPassageIndex + 1);
+                        window.scrollTo(0, 0);
+                    } else {
+                        setPage('reflection');
+                    }
+                }
+            };
+
+            const updatePassageResponse = (passageId, field, value) => {
+                setPassageResponses(prev => ({
+                    ...prev,
+                    [passageId]: {
+                        ...prev[passageId],
+                        [field]: value
+                    }
+                }));
+            };
+
+            const handleSubmitSurvey = async () => {
+                const surveyData = {
+                    timestamp: new Date().toISOString(),
+                    demographics,
+                    passages: selectedPassages.map(p => ({
+                        id: p.id,
+                        type: p.type,
+                        topic: p.topic,
+                        ...passageResponses[p.id]
+                    })),
+                    reflection
+                };
+
+                // Send to Google Sheets
+                try {
+                    await fetch(GOOGLE_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(surveyData)
+                    });
+                } catch (error) {
+                    console.error('Error submitting:', error);
+                }
+                
+                setPage('thankyou');
+            };
+
+            const currentPassage = selectedPassages[currentPassageIndex];
+            const progress = page === 'passages' ? 
+                ((currentPassageIndex + 1) / selectedPassages.length) * 100 : 0;
+
+            // WELCOME PAGE
+            if (page === 'welcome') {
+                return (
+                    <div className="container">
+                        <h1>AI Detection Survey - Pilot</h1>
+                        <p>This survey aims to investigate whether English language teachers in Japan can distinguish human-written from machine-generated English. In other words, can we spot whether a sentence came from a human mind or a robot?</p>
+                        
+                        <h2>What is "machine-generated English"?</h2>
+                        <p>In this survey, machine-generated English refers to sentences which have been generated using a large language model (e.g. ChatGPT, CoPilot) or machine-translation software (e.g. Google Translate, DeepL). For instance, when learners write a sentence in their L1 and ask a machine for a translation, the resulting sentence is considered to be machine-generated.</p>
+                        
+                        <h2>What are these extracts?</h2>
+                        <p>Some extracts are actual student writing from the pre-AI era. Other extracts have been machine-generated using an LLM (Claude) or translated from an entirely Japanese text using MT (DeepL). Some extracts contain a mixture of human-written and machine-generated English. Finally, some extracts represent actual student writing which has been "polished" by following all suggestions from AI (Grammarly, free version) to remove all errors. Note that this final type of writing is considered to be mixed human/machine rather than machine-generated.</p>
+                        
+                        <p>You will be presented with 5 random extracts from a bank of 12, so you may have more than one of each type.</p>
+                        
+                        <p style={{ fontWeight: '600', marginTop: '24px' }}>Good luck!</p>
+                        
+                        <div className="button-group">
+                            <button onClick={() => setPage('demographics')}>Begin Survey →</button>
+                        </div>
+                    </div>
+                );
+            }
+
+            // DEMOGRAPHICS PAGE
+            if (page === 'demographics') {
+                return (
+                    <div className="container">
+                        <h1>Background Information</h1>
+                        
+                        <h3>What is your first language?</h3>
+                        <select 
+                            value={demographics.l1} 
+                            onChange={(e) => setDemographics({...demographics, l1: e.target.value})}
+                        >
+                            <option value="">Please select...</option>
+                            <option value="English">English</option>
+                            <option value="Japanese">Japanese</option>
+                            <option value="Other">Other (please state)</option>
+                        </select>
+                        
+                        {demographics.l1 === 'Other' && (
+                            <input 
+                                type="text" 
+                                placeholder="Please specify your first language"
+                                style={{ marginTop: '12px' }}
+                                value={demographics.l1_other}
+                                onChange={(e) => setDemographics({...demographics, l1_other: e.target.value})}
+                            />
+                        )}
+                        
+                        <h3>How many years of experience do you have dealing with Japanese students' English writing?</h3>
+                        <select 
+                            value={demographics.experience} 
+                            onChange={(e) => setDemographics({...demographics, experience: e.target.value})}
+                        >
+                            <option value="">Please select...</option>
+                            <option value="I am not a teacher">I am not a teacher</option>
+                            <option value="Up to 1">Up to 1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="More than 10">More than 10</option>
+                        </select>
+                        
+                        <h3>(Optional) Do you have any other comments about your teaching background which may be helpful to this survey?</h3>
+                        <p style={{ fontSize: '14px', color: '#7a5c4e', margin: '8px 0' }}>
+                            E.g. I have only taught writing to advanced (CEFR C1) students.
+                        </p>
+                        <textarea 
+                            value={demographics.background}
+                            onChange={(e) => setDemographics({...demographics, background: e.target.value})}
+                            placeholder="Optional additional information..."
+                        />
+                        
+                        <div className="button-group">
+                            <button className="secondary-button" onClick={() => setPage('welcome')}>← Back</button>
+                            <button 
+                                onClick={handleDemographicsSubmit}
+                                disabled={!demographics.l1 || !demographics.experience}
+                            >
+                                Continue →
+                            </button>
+                        </div>
+                    </div>
+                );
+            }
+
+            // PASSAGE RATING PAGE
+            if (page === 'passages' && currentPassage) {
+                const response = passageResponses[currentPassage.id] || {
+                    highlighted: [],
+                    slider: 50,
+                    classification: '',
+                    comment: ''
+                };
+
+                return (
+                    <div className="container">
+                        <h1>Passage {currentPassageIndex + 1} of {selectedPassages.length}</h1>
+                        
+                        <div className="progress">
+                            <div className="progress-bar" style={{ width: `${progress}%` }}></div>
+                        </div>
+                        
+                        <PassageHighlighter 
+                            passage={currentPassage}
+                            onHighlightChange={(indices) => updatePassageResponse(currentPassage.id, 'highlighted', indices)}
+                        />
+                        
+                        <div>
+                            <h3><strong>2.</strong> What is your overall impression of this text?</h3>
+                            <div className="radio-group">
+                                {['Human-written', 'A mixture of human and machine-generated (AI/MT)', 'Machine-generated (AI/MT)'].map(option => (
+                                    <label 
+                                        key={option}
+                                        className={`radio-option ${response.classification === option ? 'selected' : ''}`}
+                                    >
+                                        <input 
+                                            type="radio"
+                                            name="classification"
+                                            value={option}
+                                            checked={response.classification === option}
+                                            onChange={(e) => updatePassageResponse(currentPassage.id, 'classification', e.target.value)}
+                                        />
+                                        {option}
+                                    </label>
+                                ))}
+                            </div>
+                        </div>
+                        
+                        <div className="slider-container">
+                            <h3><strong>3.</strong> What percentage of this text do you estimate to be machine-generated?</h3>
+                            <p style={{ fontSize: '14px', color: '#7a5c4e', marginBottom: '12px' }}>
+                                0% = the text is entirely human-written<br/>
+                                100% = the text is entirely generated using AI or MT
+                            </p>
+                            <div className="slider-value">{response.slider}% machine generated</div>
+                            <input 
+                                type="range"
+                                min="0"
+                                max="100"
+                                value={response.slider}
+                                className="slider"
+                                onChange={(e) => updatePassageResponse(currentPassage.id, 'slider', parseInt(e.target.value))}
+                            />
+                            <div className="slider-labels">
+                                <span>0% (All human)</span>
+                                <span>100% (All machine)</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3>(Optional) Any comments on the text or how you reached your evaluation?</h3>
+                            <textarea 
+                                value={response.comment}
+                                onChange={(e) => updatePassageResponse(currentPassage.id, 'comment', e.target.value)}
+                                placeholder="Optional comments..."
+                            />
+                        </div>
+                        
+                        <div className="button-group">
+                            <button 
+                                className="secondary-button" 
+                                onClick={() => {
+                                    if (currentPassageIndex > 0) {
+                                        setCurrentPassageIndex(currentPassageIndex - 1);
+                                        window.scrollTo(0, 0);
+                                    } else {
+                                        setPage('demographics');
+                                    }
+                                }}
+                            >
+                                ← Back
+                            </button>
+                            <button 
+                                onClick={handlePassageSubmit}
+                                disabled={!response.classification}
+                            >
+                                {currentPassageIndex < selectedPassages.length - 1 ? 'Next Passage →' : 'Continue to Feedback →'}
+                            </button>
+                        </div>
+                    </div>
+                );
+            }
+
+            // REFLECTION PAGE
+            if (page === 'reflection') {
+                return (
+                    <div className="container">
+                        <h1>Pilot Feedback</h1>
+                        <p>Thank you for participating in this pilot. To help improve the survey before it is distributed, I would be grateful if you could provide some feedback.</p>
+                        
+                        <h3>1. Did you experience any technical issues?</h3>
+                        <p style={{ fontSize: '14px', color: '#7a5c4e', margin: '8px 0' }}>
+                            (e.g. highlighting not working, extracts not displaying correctly)
+                        </p>
+                        <textarea 
+                            value={reflection.technical}
+                            onChange={(e) => setReflection({...reflection, technical: e.target.value})}
+                            placeholder="Describe any technical issues, or leave blank if none..."
+                        />
+                        
+                        <h3>2. How representative did you feel the extracts were of actual student writing practices (including cheating)?</h3>
+                        <div className="likert-scale">
+                            {['Very representative', 'Representative', 'Somewhat representative', 'Somewhat unrepresentative', 'Unrepresentative', 'Not at all representative'].map((option) => (
+                                <div key={option} className="likert-option">
+                                    <input 
+                                        type="radio"
+                                        name="representative"
+                                        value={option}
+                                        checked={reflection.representative === option}
+                                        onChange={(e) => setReflection({...reflection, representative: e.target.value})}
+                                    />
+                                    <label onClick={() => setReflection({...reflection, representative: option})}>
+                                        {option}
+                                    </label>
+                                </div>
+                            ))}
+                        </div>
+                        
+                        <h3>3. Based on the description in this survey, which of these cases would involve the use of machine-generated English?</h3>
+                        <p style={{ fontSize: '14px', color: '#7a5c4e', margin: '8px 0' }}>
+                            (Select all that apply)
+                        </p>
+                        <div className="checkbox-group">
+                            {[
+                                'Text translated from Japanese to English using DeepL',
+                                'Text written by an AI such as ChatGPT',
+                                'Student text with grammar corrected by AI such as Grammarly',
+                                'Student text with one AI-generated sentence added'
+                            ].map(option => (
+                                <label 
+                                    key={option}
+                                    className={`checkbox-option ${reflection.understanding.includes(option) ? 'selected' : ''}`}
+                                >
+                                    <input 
+                                        type="checkbox"
+                                        checked={reflection.understanding.includes(option)}
+                                        onChange={(e) => {
+                                            if (e.target.checked) {
+                                                setReflection({...reflection, understanding: [...reflection.understanding, option]});
+                                            } else {
+                                                setReflection({...reflection, understanding: reflection.understanding.filter(o => o !== option)});
+                                            }
+                                        }}
+                                    />
+                                    {option}
+                                </label>
+                            ))}
+                        </div>
+                        
+                        <h3>4. How long did this survey take you to complete?</h3>
+                        <select 
+                            value={reflection.time}
+                            onChange={(e) => setReflection({...reflection, time: e.target.value})}
+                        >
+                            <option value="">Please select...</option>
+                            <option value="Under 10 minutes">Under 10 minutes</option>
+                            <option value="10-15 minutes">10-15 minutes</option>
+                            <option value="15-20 minutes">15-20 minutes</option>
+                            <option value="Over 20 minutes">Over 20 minutes</option>
+                        </select>
+                        
+                        <h3>5. Do you have any other comments or suggestions regarding this survey?</h3>
+                        <textarea 
+                            value={reflection.feedback}
+                            onChange={(e) => setReflection({...reflection, feedback: e.target.value})}
+                            placeholder="Your feedback and suggestions..."
+                        />
+                        
+                        <div className="button-group">
+                            <button 
+                                className="secondary-button"
+                                onClick={() => {
+                                    setPage('passages');
+                                    setCurrentPassageIndex(selectedPassages.length - 1);
+                                    window.scrollTo(0, 0);
+                                }}
+                            >
+                                ← Back
+                            </button>
+                            <button 
+                                onClick={handleSubmitSurvey}
+                                disabled={!reflection.representative || !reflection.time}
+                            >
+                                Submit Survey
+                            </button>
+                        </div>
+                    </div>
+                );
+            }
+
+            // THANK YOU PAGE
+            if (page === 'thankyou') {
+                return (
+                    <div className="container">
+                        <h1>Thank You!</h1>
+                        <p>Your responses have been submitted successfully.</p>
+                        <p>Thank you for participating in this pilot study. Your feedback will help improve the survey before the full launch.</p>
+                        <p style={{ marginTop: '20px' }}>
+                            Please look out for the full survey—coming soon! You will be able to see the answers and compare your accuracy to that of AI checkers.
+                        </p>
+                        <p style={{ marginTop: '24px', color: '#7a5c4e' }}>
+                            If you have any questions, please contact the researcher.
+                        </p>
+                    </div>
+                );
+            }
+
+            return null;
+        }
+
+        ReactDOM.render(<SurveyApp />, document.getElementById('root'));
+    </script>
+</body>
+</html>
