@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Can you spot machine-generated English?🤖</title>
+    <title>Can you spot machine-generated English?&#129302;</title>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -104,87 +104,123 @@
         
         .slider::-webkit-slider-thumb {
             -webkit-appearance: none;
-            appearance: none;
             width: 24px;
             height: 24px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #ff9a56 0%, #ff6b35 100%);
+            background: #ff6b35;
             cursor: pointer;
-            box-shadow: 0 2px 4px rgba(255, 107, 53, 0.3);
+            box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
         }
         
         .slider::-moz-range-thumb {
             width: 24px;
             height: 24px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #ff9a56 0%, #ff6b35 100%);
+            background: #ff6b35;
             cursor: pointer;
-            box-shadow: 0 2px 4px rgba(255, 107, 53, 0.3);
             border: none;
+            box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
         }
         
         .slider-labels {
             display: flex;
             justify-content: space-between;
             margin-top: 8px;
-            font-size: 13px;
+            font-size: 14px;
             color: #7a5c4e;
         }
         
-        .classification-options {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+        .slider-value {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff6b35;
+            margin: 12px 0;
+        }
+        
+        .radio-group {
             margin: 16px 0;
         }
         
-        .classification-options label {
-            display: flex;
-            align-items: center;
-            padding: 14px 18px;
-            background: #f8f5f0;
+        .radio-option {
+            display: block;
+            margin: 12px 0;
+            padding: 12px;
             border: 2px solid #e8d4c4;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.2s;
         }
         
-        .classification-options label:hover {
+        .radio-option:hover {
+            border-color: #ff6b35;
+            background: #fff5eb;
+        }
+        
+        .radio-option input {
+            margin-right: 12px;
+        }
+        
+        .radio-option.selected {
+            border-color: #ff6b35;
+            background: #fff5eb;
+        }
+        
+        .checkbox-group {
+            margin: 16px 0;
+        }
+        
+        .checkbox-option {
+            display: block;
+            margin: 12px 0;
+            padding: 12px;
+            border: 2px solid #e8d4c4;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .checkbox-option:hover {
+            background: #fff5eb;
+        }
+        
+        .checkbox-option input {
+            margin-right: 12px;
+        }
+        
+        .checkbox-option.selected {
             background: #fff5eb;
             border-color: #ff9a56;
-        }
-        
-        .classification-options input[type="radio"] {
-            margin-right: 12px;
-            cursor: pointer;
-        }
-        
-        .classification-options input[type="radio"]:checked + span {
-            font-weight: 600;
-        }
-        
-        .classification-options label:has(input:checked) {
-            background: linear-gradient(135deg, #fff5eb 0%, #ffe8d6 100%);
-            border-color: #ff6b35;
-            box-shadow: 0 2px 8px rgba(255, 107, 53, 0.2);
         }
         
         textarea {
             width: 100%;
             min-height: 100px;
-            padding: 14px;
+            padding: 12px;
             border: 2px solid #e8d4c4;
             border-radius: 8px;
             font-family: inherit;
             font-size: 14px;
-            line-height: 1.6;
             resize: vertical;
-            transition: border-color 0.2s;
         }
         
         textarea:focus {
             outline: none;
-            border-color: #ff9a56;
+            border-color: #ff6b35;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e8d4c4;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+        
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #ff6b35;
         }
         
         select {
@@ -196,51 +232,29 @@
             font-size: 14px;
             background: white;
             cursor: pointer;
-            transition: border-color 0.2s;
         }
         
         select:focus {
             outline: none;
-            border-color: #ff9a56;
-        }
-        
-        input[type="text"],
-        input[type="email"] {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e8d4c4;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 14px;
-            transition: border-color 0.2s;
-        }
-        
-        input[type="text"]:focus,
-        input[type="email"]:focus {
-            outline: none;
-            border-color: #ff9a56;
+            border-color: #ff6b35;
         }
         
         button {
             padding: 14px 32px;
             background: linear-gradient(135deg, #ff9a56 0%, #ff6b35 100%);
-            color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
+            color: white;
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+            transition: all 0.2s;
+            box-shadow: 0 4px 16px rgba(255, 107, 53, 0.3);
         }
         
         button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
-        }
-        
-        button:active {
-            transform: translateY(0);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
         }
         
         button:disabled {
@@ -250,43 +264,36 @@
             box-shadow: none;
         }
         
-        .secondary-button {
-            background: linear-gradient(135deg, #e8d4c4 0%, #d4c4b4 100%);
-            color: #2d1810;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        .secondary-button:hover {
-            background: linear-gradient(135deg, #d4c4b4 0%, #c4b4a4 100%);
-        }
-        
         .button-group {
             display: flex;
             gap: 16px;
             margin-top: 32px;
-            justify-content: space-between;
         }
         
-        .progress-bar {
-            height: 6px;
+        .secondary-button {
+            background: white;
+            color: #7a5c4e;
+            border: 2px solid #e8d4c4;
+            box-shadow: none;
+        }
+        
+        .secondary-button:hover {
+            border-color: #c66a13;
+            background: white;
+        }
+        
+        .progress {
             background: #e8d4c4;
-            border-radius: 3px;
+            height: 8px;
+            border-radius: 4px;
             margin: 24px 0;
             overflow: hidden;
         }
         
-        .progress-fill {
+        .progress-bar {
             height: 100%;
             background: linear-gradient(90deg, #ff9a56 0%, #ff6b35 100%);
             transition: width 0.3s ease;
-        }
-        
-        .welcome-box {
-            background: #fff5eb;
-            border-left: 4px solid #ff6b35;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 4px;
         }
         
         .info-box {
@@ -321,105 +328,49 @@
             display: block;
             cursor: pointer;
         }
-
-        .checkbox-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin: 16px 0;
-        }
-
-        .checkbox-option {
-            display: flex;
-            align-items: center;
-            padding: 14px 18px;
-            background: #f8f5f0;
-            border: 2px solid #e8d4c4;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .checkbox-option:hover {
-            background: #fff5eb;
-            border-color: #ff9a56;
-        }
-
-        .checkbox-option.selected {
-            background: linear-gradient(135deg, #fff5eb 0%, #ffe8d6 100%);
-            border-color: #ff6b35;
-            box-shadow: 0 2px 8px rgba(255, 107, 53, 0.2);
-        }
-
-        .checkbox-option input[type="checkbox"] {
-            margin-right: 12px;
-            cursor: pointer;
-        }
-
+        
         .tooltip {
             position: relative;
             display: inline-block;
-            margin-left: 6px;
+            border-bottom: 1px dotted #c66a13;
             cursor: help;
+            color: #c66a13;
         }
-
-        .tooltip-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 18px;
-            height: 18px;
-            background: #ff9a56;
-            color: white;
-            border-radius: 50%;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .tooltip-text {
+        
+        .tooltip .tooltiptext {
             visibility: hidden;
-            opacity: 0;
+            width: 300px;
+            background-color: #2d1810;
+            color: #fff;
+            text-align: left;
+            border-radius: 6px;
+            padding: 10px;
             position: absolute;
+            z-index: 1;
             bottom: 125%;
             left: 50%;
-            transform: translateX(-50%);
-            background-color: #2d1810;
-            color: white;
-            padding: 12px 16px;
-            border-radius: 6px;
+            margin-left: -150px;
+            opacity: 0;
+            transition: opacity 0.3s;
             font-size: 13px;
-            width: 280px;
-            text-align: left;
-            line-height: 1.5;
-            z-index: 1000;
-            transition: opacity 0.3s, visibility 0.3s;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            line-height: 1.4;
+            font-weight: normal;
         }
-
-        .tooltip-text::after {
-            content: '';
+        
+        .tooltip .tooltiptext::after {
+            content: "";
             position: absolute;
             top: 100%;
             left: 50%;
-            transform: translateX(-50%);
-            border: 6px solid transparent;
-            border-top-color: #2d1810;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #2d1810 transparent transparent transparent;
         }
-
-        .tooltip:hover .tooltip-text {
+        
+        .tooltip:hover .tooltiptext {
             visibility: visible;
             opacity: 1;
-        }
-
-        .disclaimer-box {
-            background: #fffbf0;
-            border: 2px solid #ffd89b;
-            border-radius: 8px;
-            padding: 16px;
-            margin: 20px 0;
-            font-size: 14px;
-            color: #7a5c4e;
-            line-height: 1.6;
         }
         
         @media (max-width: 600px) {
@@ -444,15 +395,10 @@
             .likert-option input[type="radio"] {
                 margin: 0;
             }
-
-            .tooltip-text {
-                width: 240px;
-                left: 0;
-                transform: none;
-            }
-
-            .tooltip-text::after {
-                left: 20px;
+            
+            .tooltip .tooltiptext {
+                width: 250px;
+                margin-left: -125px;
             }
         }
     </style>
@@ -464,401 +410,498 @@
         const { useState, useEffect } = React;
 
         // PASTE YOUR GOOGLE APPS SCRIPT URL HERE
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyMGoQRcGBXsenWaAdUEhcIdFNl317esmY6eqAqCFON0baScIEnQn3Vom0YPSnzpqJg/exec';
+        const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
 
-        // Helper component for tooltips
-        function Tooltip({ text }) {
-            return (
-                <span className="tooltip">
-                    <span className="tooltip-icon">?</span>
-                    <span className="tooltip-text">{text}</span>
-                </span>
-            );
-        }
-
-        // PASSAGES DATA - 24 REAL EXTRACTS
+        // PASSAGES DATA
         const PASSAGES = [
             // PURE HUMAN (1-4)
             {
                 id: 'human1',
                 type: 'Pure student writing',
                 topic: 'Food production and hunger',
-                sentences: [
-                    'For most of the less developed countries, eradicating hunger is inevitable.',
-                    'However, the most countries are facing difficulty to cope with this problem.',
-                    'Although there are several aspects for ending hunger, one of the most influent problems is environmental problems in food production.',
-                    'Climate change, decrease of arable lands, and increase of biotechnology are featured as the current and future problems of food production.',
-                    'First of all, current climate change affects food production.',
-                    'Since climate conditions influences most of plants largely, harvests are fluctuated depending on the climate.',
-                    'Recently, climate has become warmer than the past in many areas.',
-                    'Although the phenomena increase harvests in some areas, it decrease them in other areas.',
-                    'Along with warmer climate, availability of temperature has also become bigger.',
-                    'As a result, harvests have fluctuated widely.',
-                    'Climate change such as warmer climate and wider availability can result in the decrease of food production.',
-                    'Furthermore, overuse of arable land is one of the problems.',
-                    'Even though there are one-half of arable lands enough to conduct agriculture, most of the good lands are already used.',
-                    'Moreover, increase of the use of the land has threatened the number of the lands that human can use for the future.',
-                    'Currently, many of the lands are damaged by human activities such as rapid population growth, desertification or deforestation.',
-                    'Current human use of arable lands hurts them and decreases the potential of them for future food production.'
+                level: 'CEFR B1-B2',
+                paragraphs: [
+                    [
+                        'For most of the less developed countries, eradicating hunger is inevitable.',
+                        'However, the most countries are facing difficulty to cope with this problem.',
+                        'Although there are several aspects for ending hunger, one of the most influent problems is environmental problems in food production.',
+                        'Climate change, decrease of arable lands, and increase of biotechnology are featured as the current and future problems of food production.',
+                    ],
+                    [
+                        'First of all, current climate change affects food production.',
+                        'Since climate conditions influences most of plants largely, harvests are fluctuated depending on the climate.',
+                        'Recently, climate has become warmer than the past in many areas.',
+                        'Although the phenomena increase harvests in some areas, it decrease them in other areas.',
+                        'Along with warmer climate, availability of temperature has also become bigger.',
+                        'As a result, harvests have fluctuated widely.',
+                        'Climate change such as warmer climate and wider availability can result in the decrease of food production.',
+                    ],
+                    [
+                        'Furthermore, overuse of arable land is one of the problems.',
+                        'Even though there are one-half of arable lands enough to conduct agriculture, most of the good lands are already used.',
+                        'Moreover, increase of the use of the land has threatened the number of the lands that human can use for the future.',
+                        'Currently, many of the lands are damaged by human activities such as rapid population growth, desertification or deforestation.',
+                        'Current human use of arable lands hurts them and decreases the potential of them for future food production.',
+                    ],
                 ]
             },
             {
                 id: 'human2',
                 type: 'Pure student writing',
                 topic: 'Nutrition and development',
-                sentences: [
-                    'The second effect by the lack of nutrition is distraction of brain.',
-                    'Brain is very sensitive and complex organ within the human body.',
-                    'In order to function the brain properly, individual needs a lot of nutrition.',
-                    'For example, sugars are needed for brain to function well, and other vitamins are also necessary for brain.',
-                    'If these ingredients lack, a brain can be distracted.',
-                    'A brain of a child is more prone to be distracted.',
-                    'If the system of brain is damaged, it is impossible to recover it.',
-                    'Therefore, the lack of nutrition can lead the damage of brain, and this is one of the critical effects.',
-                    'The last effect brought by the lack of nutrition is that individual cannot receive education.',
-                    'By lack of nutrition, human\'s body, especially body of children, cannot function well.',
-                    'For example, it is difficult for children to move because body needs nutrition to move.',
-                    'Moreover, it is difficult for children to learn and understand the class or materials, because as I mention before, lack of nutrition lead the distraction of brain.',
-                    'Therefore, the individual cannot learn, if some nutrition lack.',
-                    'Moreover, the lack of education effects on the nation itself.',
-                    'This is because if the people do not receive education, it is difficult for a nation to prosper.',
-                    'Therefore, one of the negative effects by lack of nutrition is the less opportunity for education.',
-                    'In conclusion, lack of nutrition has a lot of effects on both individual and nation itself.',
-                    'Individual can be dead by some preventable diseases, brain can be distracted, and individual cannot receive enough education.'
+                level: 'CEFR B1-B2',
+                paragraphs: [
+                    [
+                        'The second effect by the lack of nutrition is distraction of brain.',
+                        'Brain is very sensitive and complex organ within the human body.',
+                        'In order to function the brain properly, individual needs a lot of nutrition.',
+                        'For example, sugars are needed for brain to function well, and other vitamins are also necessary for brain.',
+                        'If these ingredients lack, a brain can be distracted.',
+                        'A brain of a child is more prone to be distracted.',
+                        'If the system of brain is damaged, it is impossible to recover it.',
+                        'Therefore, the lack of nutrition can lead the damage of brain, and this is one of the critical effects.',
+                    ],
+                    [
+                        'The last effect brought by the lack of nutrition is that individual cannot receive education.',
+                        'By lack of nutrition, human’s body, especially body of children, cannot function well.',
+                        'For example, it is difficult for children to move because body needs nutrition to move.',
+                        'Moreover, it is difficult for children to learn and understand the class or materials, because as I mention before, lack of nutrition lead the distraction of brain.',
+                        'Therefore, the individual cannot learn, if some nutrition lack.',
+                        'Moreover, the lack of education effects on the nation itself.',
+                        'This is because if the people do not receive education, it is difficult for a nation to prosper.',
+                        'Therefore, one of the negative effects by lack of nutrition is the less opportunity for education.',
+                    ],
+                    [
+                        'In conclusion, lack of nutrition has a lot of effects on both individual and nation itself.',
+                        'Individual can be dead by some preventable diseases, brain can be distracted, and individual cannot receive enough education.',
+                    ],
                 ]
             },
             {
                 id: 'human3',
                 type: 'Pure student writing',
                 topic: 'Consumption tax in Japan',
-                sentences: [
-                    'In 2014, there were several things in Japan.',
-                    'The one of them is the consumption tax.',
-                    'At April 1st Japanese Government raised the consumption tax from 5% to 8%.',
-                    'This influence is very big, and there is not someone who the future situation exactly.',
-                    'Some people think that by the raising consumption tax, the lives of many people become harder.',
-                    'Kaori Yamane(2013), the president of Japan housewives association thinks that discrimination will spread.',
-                    'On the other hand, some people think that raising consumption tax cannot help doing.',
-                    'Takatoshi Itou (2013)、professor of Tokyo graduate school, thinks that if the raising consumption tax is took before next timing, the cost is bigger, so now is better timing.',
-                    'In that situation, I see the positive raising consumption tax.',
-                    'The reason is about aging society and stability of government tax revenue.',
-                    'First reason is the aging society.',
-                    'Aging society indicates that the rate of older persons increases, and the rate of children decreases.',
-                    'Moreover, the number of worker decreases.',
-                    'This means that the person who pays money to the government as a tax decrease.',
-                    'Eventually, in the near future, one worker must support some older persons by the tax.',
-                    'That situation is very strange.',
-                    'Moreover, the welfare occupies the high rate of the all expenditure of Japanese government.',
-                    'Therefore, there is not enough money to use the education or the policy which invest to the future.',
-                    'In following this situation, the children in the future is very poor.',
-                    'Therefore, raising consumption tax is not helping.'
+                level: 'CEFR B1-B2',
+                paragraphs: [
+                    [
+                        'In 2014, there were several things in Japan.',
+                        'The one of them is the consumption tax.',
+                        'At April 1st Japanese Government raised the consumption tax from 5% to 8%.',
+                        'This influence is very big, and there is not someone who the future situation exactly.',
+                        'Some people think that by the raising consumption tax, the lives of many people become harder.',
+                        'Kaori Yamane(2013), the president of Japan housewives association thinks that discrimination will spread.',
+                        'On the other hand, some people think that raising consumption tax cannot help doing.',
+                        'Takatoshi Itou (2013)、professor of Tokyo graduate school, thinks that if the raising consumption tax is took before next timing, the cost is bigger, so now is better timing.',
+                        'In that situation, I see the positive raising consumption tax.',
+                        'The reason is about aging society and stability of government tax revenue.',
+                    ],
+                    [
+                        'First reason is the aging society.',
+                        'Aging society indicates that the rate of older persons increases, and the rate of children decreases.',
+                        'Moreover, the number of worker decreases.',
+                        'This means that the person who pays money to the government as a tax decrease.',
+                        'Eventually, in the near future, one worker must support some older persons by the tax.',
+                        'That situation is very strange.',
+                        'Moreover, the welfare occupies the high rate of the all expenditure of Japanese government.',
+                        'Therefore, there is not enough money to use the education or the policy which invest to the future.',
+                        'In following this situation, the children in the future is very poor.',
+                        'Therefore, raising consumption tax is not helping.',
+                    ],
                 ]
             },
             {
                 id: 'human4',
                 type: 'Pure student writing',
                 topic: 'Malnutrition effects',
-                sentences: [
-                    'First of all, lack of nutrition triggers risk of being blind.',
-                    'Vitamin, one of important nutrition contained in food, plays the role of supporting the ability to see.',
-                    'However, many children suffer from blindness in fact so that many developing countries only export agricultural products instead of providing them into the domestic markets.',
-                    'Since children learn a large portion of knowledge through eyes, the damage on eyes seriously prevent their educational level rise.',
-                    'Insufficient intake of nutrition bothers healthy development of brains.',
-                    'According to the Global Issue, I remember it read that given not enough nutrition, neuron, which is like a net and enables people to think, can hardly grow.',
-                    'As the result, the people will face difficulty to raise their intellectual levels.',
-                    'This effect is serious because if the people are young, their future jobs are inevitably limited to agriculture, by which people generally cannot earn enough money to escape from poverty.',
-                    'Underdevelopment of brains causes a vicious cycle.',
-                    'Finally, malnutrition is harmful because it increases the possibility of people for being infected by diseases.',
-                    'Absorbed nutrition works to let bodies be immune against prevalent viruses and risks to health.',
-                    'Actually, the diseases are treatable and not able to threaten lives in developed nations; however, they are fatal in the circumstance of developing countries where medical treatments are not commonly accessible.',
-                    'As mentioned above, malnutrition are quite harmful to development of sight, brains, and immune system.',
-                    'Either of these is necessary for people to spend safe healthy lives.'
+                level: 'CEFR B1-B2',
+                paragraphs: [
+                    [
+                        'First of all, lack of nutrition triggers risk of being blind.',
+                        'Vitamin, one of important nutrition contained in food, plays the role of supporting the ability to see.',
+                        'However, many children suffer from blindness in fact so that many developing countries only export agricultural products instead of providing them into the domestic markets.',
+                        'Since children learn a large portion of knowledge through eyes, the damage on eyes seriously prevent their educational level rise.',
+                    ],
+                    [
+                        'Insufficient intake of nutrition bothers healthy development of brains.',
+                        'According to the Global Issue, I remember it read that given not enough nutrition, neuron, which is like a net and enables people to think, can hardly grow.',
+                        'As the result, the people will face difficulty to raise their intellectual levels.',
+                        'This effect is serious because if the people are young, their future jobs are inevitably limited to agriculture, by which people generally cannot earn enough money to escape from poverty.',
+                        'Underdevelopment of brains causes a vicious cycle.',
+                    ],
+                    [
+                        'Finally, malnutrition is harmful because it increases the possibility of people for being infected by diseases.',
+                        'Absorbed nutrition works to let bodies be immune against prevalent viruses and risks to health.',
+                        'Actually, the diseases are treatable and not able to threaten lives in developed nations; however, they are fatal in the circumstance of developing countries where medical treatments are not commonly accessible.',
+                    ],
+                    [
+                        'As mentioned above, malnutrition are quite harmful to development of sight, brains, and immune system.',
+                        'Either of these is necessary for people to spend safe healthy lives.',
+                    ],
                 ]
             },
             // PURE LLM (5-8)
             {
                 id: 'llm1',
                 type: '100% AI (LLM)',
-                topic: 'Hunger in less developed countries',
-                sentences: [
-                    'One of the most serious problems that less developed countries face today is hunger.',
-                    'Many people in these countries do not have enough food to live healthy lives, and this situation affects not only individuals but also the development of the whole society.',
-                    'Hunger is caused by several factors, such as poverty, lack of education, and weak agricultural systems.',
-                    'In order to solve this problem, it is important to understand the main challenges and consider possible solutions.',
-                    'One major challenge is poverty.',
-                    'Many people in less developed countries cannot afford enough nutritious food because their income is very low.',
-                    'Even if food is available in markets, it is often too expensive for poor families.',
-                    'As a result, people rely on cheap food with low nutritional value, which can lead to malnutrition, especially among children.',
-                    'Poverty also limits access to healthcare, which makes the effects of hunger more serious.',
-                    'Another important challenge is the lack of human resources and education.',
-                    'In many regions, farmers do not have enough knowledge about modern farming methods, such as how to use fertilizers effectively or how to protect crops from disease.',
-                    'Because of this, food production remains low.',
-                    'In addition, when people suffer from hunger, they do not have enough energy to study or work well.',
-                    'This creates a negative cycle, because low education leads to low productivity, which then causes more poverty and hunger.',
-                    'Environmental problems are also becoming a future challenge.',
-                    'Climate change has increased droughts, floods, and unpredictable weather, which make farming more difficult.',
-                    'Less developed countries are especially vulnerable because they often depend on agriculture and do not have strong systems to respond to natural disasters.',
-                    'These environmental issues may make hunger even worse in the future.'
+                topic: 'Hunger in developing countries',
+                level: 'CEFR B1-B2',
+                paragraphs: [
+                    [
+                        'One of the most serious problems that less developed countries face today is hunger.',
+                        'Many people in these countries do not have enough food to live healthy lives, and this situation affects not only individuals but also the development of the whole society.',
+                        'Hunger is caused by several factors, such as poverty, lack of education, and weak agricultural systems.',
+                        'In order to solve this problem, it is important to understand the main challenges and consider possible solutions.',
+                    ],
+                    [
+                        'One major challenge is poverty.',
+                        'Many people in less developed countries cannot afford enough nutritious food because their income is very low.',
+                        'Even if food is available in markets, it is often too expensive for poor families.',
+                        'As a result, people rely on cheap food with low nutritional value, which can lead to malnutrition, especially among children.',
+                        'Poverty also limits access to healthcare, which makes the effects of hunger more serious.',
+                    ],
+                    [
+                        'Another important challenge is the lack of human resources and education.',
+                        'In many regions, farmers do not have enough knowledge about modern farming methods, such as how to use fertilizers effectively or how to protect crops from disease.',
+                        'Because of this, food production remains low.',
+                        'In addition, when people suffer from hunger, they do not have enough energy to study or work well.',
+                        'This creates a negative cycle, because low education leads to low productivity, which then causes more poverty and hunger.',
+                    ],
+                    [
+                        'Environmental problems are also becoming a future challenge.',
+                        'Climate change has increased droughts, floods, and unpredictable weather, which make farming more difficult.',
+                        'Less developed countries are especially vulnerable because they often depend on agriculture and do not have strong systems to respond to natural disasters.',
+                        'These environmental issues may make hunger even worse in the future.',
+                    ],
                 ]
             },
             {
                 id: 'llm2',
                 type: '100% AI (LLM)',
                 topic: 'SDG 12: Responsible Consumption',
-                sentences: [
-                    'After learning about SDG 12, "Responsible Consumption and Production," I began to think more carefully about my daily habits.',
-                    'Before, I often bought new clothes or products without thinking deeply about where they came from or how they were made.',
-                    'However, through classes and discussions, I realized that mass consumption leads to large amounts of waste and puts pressure on the environment.',
-                    'Since then, I have tried to reduce unnecessary purchases and reuse items as much as possible.',
-                    'One small action I started was bringing my own reusable bag and bottle every day.',
-                    'At first, this felt inconvenient, but over time it became a natural habit.',
-                    'I also began choosing second-hand items when possible.',
-                    'Although these actions may seem insignificant, I believe they help reduce waste and encourage more sustainable lifestyles.',
-                    'According to the Ministry of the Environment, Japan produces millions of tons of waste each year, and even a small reduction by individuals can make a difference.',
-                    'I also think awareness is just as important as action.',
-                    'Many people still do not realize how their daily choices affect the environment and society.',
-                    'By talking with friends and family about these issues, I hope to spread awareness little by little.',
-                    'Just as the SDGs emphasize global cooperation, I believe change starts from individuals sharing ideas and values.',
-                    'The SDGs may feel like distant international goals, but they are closely connected to our everyday lives.',
-                    'If each person makes small, realistic efforts and continues them, society can gradually move in a better direction.',
-                    'I want to keep reflecting on my actions and contribute, even in a small way, to creating a more sustainable future.'
+                level: 'CEFR B1-B2',
+                paragraphs: [
+                    [
+                        'After learning about SDG 12, “Responsible Consumption and Production,” I began to think more carefully about my daily habits.',
+                        'Before, I often bought new clothes or products without thinking deeply about where they came from or how they were made.',
+                        'However, through classes and discussions, I realized that mass consumption leads to large amounts of waste and puts pressure on the environment.',
+                        'Since then, I have tried to reduce unnecessary purchases and reuse items as much as possible.',
+                    ],
+                    [
+                        'One small action I started was bringing my own reusable bag and bottle every day.',
+                        'At first, this felt inconvenient, but over time it became a natural habit.',
+                        'I also began choosing second-hand items when possible.',
+                        'Although these actions may seem insignificant, I believe they help reduce waste and encourage more sustainable lifestyles.',
+                        'According to the Ministry of the Environment, Japan produces millions of tons of waste each year, and even a small reduction by individuals can make a difference.',
+                    ],
+                    [
+                        'I also think awareness is just as important as action.',
+                        'Many people still do not realize how their daily choices affect the environment and society.',
+                        'By talking with friends and family about these issues, I hope to spread awareness little by little.',
+                        'Just as the SDGs emphasize global cooperation, I believe change starts from individuals sharing ideas and values.',
+                    ],
+                    [
+                        'The SDGs may feel like distant international goals, but they are closely connected to our everyday lives.',
+                        'If each person makes small, realistic efforts and continues them, society can gradually move in a better direction.',
+                        'I want to keep reflecting on my actions and contribute, even in a small way, to creating a more sustainable future.',
+                    ],
                 ]
             },
             {
                 id: 'llm3',
                 type: '100% AI (LLM)',
                 topic: 'Labor market in Japan',
-                sentences: [
-                    'I think this article gives a very realistic explanation of Japan\'s labor market situation.',
-                    'Many people believe that labor shortages will stop economic growth, but the author shows that growth depends on how firms and governments respond.',
-                    'The use of data, such as the unemployment rate and job offers-to-applicants ratio, makes the argument convincing and easy to understand.',
-                    'One issue that I found especially important is the gap between regular and non-regular workers.',
-                    'Although there are many job openings, most of them are for part-time positions.',
-                    'According to the article, the job offers-to-applicants ratio for regular workers was only 0.67, which shows that stable jobs are still limited (JCER, 2014).',
-                    'This situation creates insecurity for workers and increases income inequality.',
-                    'In my opinion, this makes it difficult for young people to plan their future, including marriage and having children.',
-                    'The article also explains that labor shortages can lead to technological development.',
-                    'When wages rise, companies may invest in machines or systems that reduce the need for human labor.',
-                    'This idea is based on the Cobb–Douglas production function, which allows labor and capital to substitute for each other (JCER, 2014).',
-                    'I think this is a positive point, because it encourages innovation and higher productivity.',
-                    'The government should support small and medium-sized companies that want to invest in such technology.'
+                level: 'CEFR B1-B2',
+                paragraphs: [
+                    [
+                        'I think this article gives a very realistic explanation of Japan’s labor market situation.',
+                        'Many people believe that labor shortages will stop economic growth, but the author shows that growth depends on how firms and governments respond.',
+                        'The use of data, such as the unemployment rate and job offers-to-applicants ratio, makes the argument convincing and easy to understand.',
+                    ],
+                    [
+                        'One issue that I found especially important is the gap between regular and non-regular workers.',
+                        'Although there are many job openings, most of them are for part-time positions.',
+                        'According to the article, the job offers-to-applicants ratio for regular workers was only 0.67, which shows that stable jobs are still limited (JCER, 2014).',
+                        'This situation creates insecurity for workers and increases income inequality.',
+                        'In my opinion, this makes it difficult for young people to plan their future, including marriage and having children.',
+                    ],
+                    [
+                        'The article also explains that labor shortages can lead to technological development.',
+                        'When wages rise, companies may invest in machines or systems that reduce the need for human labor.',
+                        'This idea is based on the Cobb–Douglas production function, which allows labor and capital to substitute for each other (JCER, 2014).',
+                        'I think this is a positive point, because it encourages innovation and higher productivity.',
+                        'The government should support small and medium-sized companies that want to invest in such technology.',
+                    ],
                 ]
             },
             {
                 id: 'llm4',
                 type: '100% AI (LLM)',
                 topic: 'Effects of malnutrition',
-                sentences: [
-                    'First, lack of nutrition has a serious effect on individuals\' health.',
-                    'People who suffer from malnutrition are more likely to get sick and have weaker immune systems.',
-                    'Children who do not eat enough nutritious food may experience stunted growth or long-term health problems.',
-                    'As a result, governments must spend more money on healthcare, which reduces the budget for other areas such as education or infrastructure.',
-                    'Poor health among the population slows down national development.',
-                    'Second, lack of nutrition negatively affects education.',
-                    'When children are hungry, it is difficult for them to concentrate in class or stay motivated to study.',
-                    'Many students may miss school because of illness or lack of energy.',
-                    'In addition, families facing food shortages may prioritize work over education, forcing children to help earn money instead of attending school.',
-                    'This leads to low education levels, which limits future opportunities for both individuals and the country.',
-                    'Another important effect is low economic productivity.',
-                    'Adults who are malnourished often do not have enough physical strength to work efficiently, especially in labor-intensive jobs such as farming.',
-                    'This reduces overall productivity and income.',
-                    'Furthermore, a workforce with low education and poor health cannot support industrial or technological development.',
-                    'This situation creates a negative cycle, in which poverty causes hunger and hunger increases poverty.',
-                    'In conclusion, lack of nutrition has serious effects on both individuals and countries.',
-                    'It damages health, prevents effective education, and lowers economic productivity.',
-                    'Because these problems are connected, improving access to nutritious food is essential for development.',
-                    'In my opinion, addressing nutrition should be a top priority for governments and international organizations that aim to support long-term growth in less developed countries.'
+                level: 'CEFR B1-B2',
+                paragraphs: [
+                    [
+                        'First, lack of nutrition has a serious effect on individuals’ health.',
+                        'People who suffer from malnutrition are more likely to get sick and have weaker immune systems.',
+                        'Children who do not eat enough nutritious food may experience stunted growth or long-term health problems.',
+                        'As a result, governments must spend more money on healthcare, which reduces the budget for other areas such as education or infrastructure.',
+                        'Poor health among the population slows down national development.',
+                    ],
+                    [
+                        'Second, lack of nutrition negatively affects education.',
+                        'When children are hungry, it is difficult for them to concentrate in class or stay motivated to study.',
+                        'Many students may miss school because of illness or lack of energy.',
+                        'In addition, families facing food shortages may prioritize work over education, forcing children to help earn money instead of attending school.',
+                        'This leads to low education levels, which limits future opportunities for both individuals and the country.',
+                    ],
+                    [
+                        'Another important effect is low economic productivity.',
+                        'Adults who are malnourished often do not have enough physical strength to work efficiently, especially in labor-intensive jobs such as farming.',
+                        'This reduces overall productivity and income.',
+                        'Furthermore, a workforce with low education and poor health cannot support industrial or technological development.',
+                        'This situation creates a negative cycle, in which poverty causes hunger and hunger increases poverty.',
+                    ],
+                    [
+                        'In conclusion, lack of nutrition has serious effects on both individuals and countries.',
+                        'It damages health, prevents effective education, and lowers economic productivity.',
+                        'Because these problems are connected, improving access to nutritious food is essential for development.',
+                        'In my opinion, addressing nutrition should be a top priority for governments and international organizations that aim to support long-term growth in less developed countries.',
+                    ],
                 ]
             },
             // PURE MT (9-12)
             {
                 id: 'mt1',
                 type: '100% MT (Machine Translation)',
-                topic: 'Ocean pollution and solutions',
-                sentences: [
-                    'Based on these findings, we concluded that stopping littering at the beach and properly disposing of trash in designated areas would be beneficial.',
-                    'Consequently, three solutions were proposed.',
-                    'The first solution is "Implementing a deposit system like Germany\'s locally."',
-                    'Under this system, when purchasing plastic bottles or cans, consumers pay not only the product price but also a container deposit.',
-                    'Returning the empty container to a dedicated machine refunds this deposit.',
-                    'Introducing this system is expected to significantly reduce plastic bottle littering.',
-                    'The second solution is "Installing collection boxes for items people don\'t know how to dispose of."',
-                    'For example, collecting toys children no longer use.',
-                    'This would reduce the disposal of reusable resources and undoubtedly decrease illegal dumping.',
-                    'The third solution was "making people aware of human presence."',
-                    'Our survey found that most intact garbage was in unmanaged coastal areas.',
-                    'Therefore, making people aware of a presence would be effective.',
-                    'We considered placing something that changes daily, like a flip calendar, as a potential solution.',
-                    'Ultimately, we concluded that protecting the ocean\'s richness requires a shift in awareness, particularly reducing littering in urban areas.',
-                    'Japan is one of the world\'s top countries in plastic waste per capita, discarding 32 kilograms annually (2014).',
-                    'It also ranks second only to the US in plastic packaging waste.',
-                    'If we continue producing waste at the current rate, it could become impossible to live on Earth.',
-                    'This is not a problem we students alone can solve.',
-                    'I firmly believe that only when every generation seriously considers, acts upon, and achieves solutions will we create a truly vibrant, hopeful society.'
+                topic: 'Beach littering solutions',
+                level: 'CEFR B1-B2',
+                paragraphs: [
+                    [
+                        'Based on these findings, we concluded that stopping littering at the beach and properly disposing of trash in designated areas would be beneficial.',
+                        'Consequently, three solutions were proposed.',
+                        'The first solution is “Implementing a deposit system like Germany\'s locally.” Under this system, when purchasing plastic bottles or cans, consumers pay not only the product price but also a container deposit.',
+                        'Returning the empty container to a dedicated machine refunds this deposit.',
+                        'Introducing this system is expected to significantly reduce plastic bottle littering.',
+                        'The second solution is “Installing collection boxes for items people don\'t know how to dispose of.” For example, collecting toys children no longer use.',
+                        'This would reduce the disposal of reusable resources and undoubtedly decrease illegal dumping.',
+                        'The third solution was “making people aware of human presence.” Our survey found that most intact garbage was in unmanaged coastal areas.',
+                        'Therefore, making people aware of a presence would be effective.',
+                        'We considered placing something that changes daily, like a flip calendar, as a potential solution.',
+                        'Ultimately, we concluded that protecting the ocean\'s richness requires a shift in awareness, particularly reducing littering in urban areas.',
+                    ],
+                    [
+                        'Japan is one of the world\'s top countries in plastic waste per capita, discarding 32 kilograms annually (2014).',
+                        'It also ranks second only to the US in plastic packaging waste.',
+                        'If we continue producing waste at the current rate, it could become impossible to live on Earth.',
+                        'This is not a problem we students alone can solve.',
+                        'I firmly believe that only when every generation seriously considers, acts upon, and achieves solutions will we create a truly vibrant, hopeful society.',
+                    ],
                 ]
             },
             {
                 id: 'mt2',
                 type: '100% MT (Machine Translation)',
                 topic: 'Donations and diversity',
-                sentences: [
-                    'To achieve goals, one thing we could do was donating.',
-                    'Donations send supplies to people suffering from conflicts.',
-                    'Donated funds can become vaccines or therapeutic foods, potentially lowering the child mortality rate, which is a major issue.',
-                    'And when learning tools like pencils and notebooks arrive, it can also provide opportunities to learn.',
-                    'With UNICEF donations, 2 yen buys one vitamin A capsule.',
-                    'I was surprised to learn that 2 yen could become medicine and save someone sick.',
-                    'It made me realize anew that donating can be a lifeline for those suffering.',
-                    'Accepting diversity is another thing we can do.',
-                    'People around the world have different ways of thinking and perceiving things; no one is exactly like me.',
-                    'It\'s only natural that each person is different.',
-                    'That\'s precisely why feelings of "liking" or "disliking" arise.',
-                    'However, isn\'t it wrong to impose only your own values and ideas on others, or to try to exclude them?',
-                    'I believe recognizing and accepting each person\'s differences is crucial for building a society where everyone can live authentically.',
-                    'Rather than criticizing unilaterally, embracing differences positively—understanding that everyone is different—and mutually acknowledging one another is essential for achieving a peaceful world.',
-                    'Many targets, like "developing public institutions" or "providing legal identity documents," may require national leadership.',
-                    'But that doesn\'t mean we can\'t do anything.',
-                    'Donations enable medical treatment or educational opportunities through aid funds.',
-                    'Recognizing diversity allows those who suffered discrimination or misunderstanding to live authentically.',
-                    'Small acts of courage yield significant results.',
-                    'There are many things we can do within our daily lives.',
-                    'Looking at the current state of the world and each of us thinking about these challenges is surely the first step toward achieving our goals.'
+                level: 'CEFR B1-B2',
+                paragraphs: [
+                    [
+                        'To achieve goals, one thing we could do was donating.',
+                        'Donations send supplies to people suffering from conflicts.',
+                        'Donated funds can become vaccines or therapeutic foods, potentially lowering the child mortality rate, which is a major issue.',
+                        'And when learning tools like pencils and notebooks arrive, it can also provide opportunities to learn.',
+                        'With UNICEF donations, 2 yen buys one vitamin A capsule.',
+                        'I was surprised to learn that 2 yen could become medicine and save someone sick.',
+                        'It made me realize anew that donating can be a lifeline for those suffering.',
+                    ],
+                    [
+                        'Accepting diversity is another thing we can do.',
+                        'People around the world have different ways of thinking and perceiving things; no one is exactly like me.',
+                        'It\'s only natural that each person is different.',
+                        'That\'s precisely why feelings of “liking” or “disliking” arise.',
+                        'However, isn\'t it wrong to impose only your own values and ideas on others, or to try to exclude them?',
+                        'I believe recognizing and accepting each person\'s differences is crucial for building a society where everyone can live authentically.',
+                        'Rather than criticizing unilaterally, embracing differences positively—understanding that everyone is different—and mutually acknowledging one another is essential for achieving a peaceful world.',
+                    ],
+                    [
+                        'Many targets, like “developing public institutions” or “providing legal identity documents,” may require national leadership.',
+                        'But that doesn\'t mean we can\'t do anything.',
+                        'Donations enable medical treatment or educational opportunities through aid funds.',
+                        'Recognizing diversity allows those who suffered discrimination or misunderstanding to live authentically.',
+                        'Small acts of courage yield significant results.',
+                        'There are many things we can do within our daily lives.',
+                        'Looking at the current state of the world and each of us thinking about these challenges is surely the first step toward achieving our goals.',
+                    ],
                 ]
             },
             {
                 id: 'mt3',
                 type: '100% MT (Machine Translation)',
-                topic: 'Poverty and volunteering',
-                sentences: [
-                    'I don\'t know how much the world will improve from its current state of poverty, but I\'d be happy if it became a world where everyone currently living in poverty could live happily with smiles on their faces.',
-                    'To achieve that, I believe the UN should build international relationships where food and supplies can be shared.',
-                    'I think that could make things at least a little better than they are now.',
-                    'The reason I believe volunteer organizations need strengthening is that while increasing the number of people going to support those in poverty locally is incredibly important, I also feel there\'s a huge need for people who can spread awareness about the current state of poverty.',
-                    'By making people aware of the current situation, I think it might spark even a little interest in volunteer groups or donations.',
-                    'If that happens, I believe more people will start thinking deeply about the problem of poverty, and the number of people around the world thinking "Let\'s eliminate poverty" will greatly increase.',
-                    'Once I enter the workforce, I want to join a volunteer organization and do whatever I can to support those living in poverty.',
-                    'I want to spread awareness about poverty worldwide during that time and help create a world where everyone views poverty as a problem.',
-                    'Until then, I\'ll keep donating, and I\'d be happy if even a little of my money could bring more smiles to someone.',
-                    'There are countless things demanded of the UN, demanded of us, and needed in the current state of affairs.',
-                    'But to prevent more people from suffering, to make everyone feel happy, I want to do everything I possibly can, to the very best of my ability.'
+                topic: 'UN and poverty',
+                level: 'CEFR B1-B2',
+                paragraphs: [
+                    [
+                        'I don\'t know how much the world will improve from its current state of poverty, but I\'d be happy if it became a world where everyone currently living in poverty could live happily with smiles on their faces.',
+                        'To achieve that, I believe the UN should build international relationships where food and supplies can be shared.',
+                        'I think that could make things at least a little better than they are now.',
+                    ],
+                    [
+                        'The reason I believe volunteer organizations need strengthening is that while increasing the number of people going to support those in poverty locally is incredibly important, I also feel there\'s a huge need for people who can spread awareness about the current state of poverty.',
+                        'By making people aware of the current situation, I think it might spark even a little interest in volunteer groups or donations.',
+                        'If that happens, I believe more people will start thinking deeply about the problem of poverty, and the number of people around the world thinking “Let\'s eliminate poverty” will greatly increase.',
+                        'Once I enter the workforce, I want to join a volunteer organization and do whatever I can to support those living in poverty.',
+                        'I want to spread awareness about poverty worldwide during that time and help create a world where everyone views poverty as a problem.',
+                        'Until then, I\'ll keep donating, and I\'d be happy if even a little of my money could bring more smiles to someone.',
+                    ],
+                    [
+                        'There are countless things demanded of the UN, demanded of us, and needed in the current state of affairs.',
+                        'But to prevent more people from suffering, to make everyone feel happy, I want to do everything I possibly can, to the very best of my ability.',
+                    ],
                 ]
             },
             {
                 id: 'mt4',
                 type: '100% MT (Machine Translation)',
-                topic: 'SDG 11: Sustainable cities',
-                sentences: [
-                    'Since learning about SDG 11 "Sustainable Cities and Communities," I have actively participated in activities like picking up litter to help everyone live comfortably.',
-                    'I have also engaged in local traditional cultural activities.',
-                    'This included volunteering at a local summer festival, where I helped build a portable shrine (mikoshi) and presented it to the attendees.',
-                    'Through these efforts, I came to believe that advancing sustainable communities requires maintaining a clean environment and promoting local traditions to instill pride in residents.',
-                    'Learning about the SDGs heightened my awareness of community revitalization and, most importantly, made my own life more enjoyable.',
-                    'I also feel awareness is growing, as seen in recent TV specials on the SDGs and songs themed around them.',
-                    'The SDGs are goals to be achieved by 2030.',
-                    'Whether we can achieve them depends on each and every one of us, so I want to continue the efforts I\'ve made so far.',
-                    'The future we create won\'t be easy.',
-                    'That\'s precisely why I want everyone to know that each person\'s steady effort is essential.',
-                    'For those unfamiliar with the SDGs, perhaps start by learning about them little by little, choosing one goal you want to achieve, and working towards it.',
-                    'Each individual\'s effort is the first step to changing the world.',
-                    'I myself believe I must take actions, step by step, that bring us closer to achieving these goals for society and the world.',
-                    'Each of us is a key player in the SDGs.',
-                    'If we all work together, we might be able to save even one person suffering in the world.'
+                topic: 'SDG 11: Sustainable Cities',
+                level: 'CEFR B1-B2',
+                paragraphs: [
+                    [
+                        'Since learning about SDG 11 “Sustainable Cities and Communities,” I have actively participated in activities like picking up litter to help everyone live comfortably.',
+                        'I have also engaged in local traditional cultural activities.',
+                        'This included volunteering at a local summer festival, where I helped build a portable shrine (mikoshi) and presented it to the attendees.',
+                    ],
+                    [
+                        'Through these efforts, I came to believe that advancing sustainable communities requires maintaining a clean environment and promoting local traditions to instill pride in residents.',
+                        'Learning about the SDGs heightened my awareness of community revitalization and, most importantly, made my own life more enjoyable.',
+                        'I also feel awareness is growing, as seen in recent TV specials on the SDGs and songs themed around them.',
+                        'The SDGs are goals to be achieved by 2030.',
+                        'Whether we can achieve them depends on each and every one of us, so I want to continue the efforts I\'ve made so far.',
+                    ],
+                    [
+                        'The future we create won\'t be easy.',
+                        'That\'s precisely why I want everyone to know that each person\'s steady effort is essential.',
+                        'For those unfamiliar with the SDGs, perhaps start by learning about them little by little, choosing one goal you want to achieve, and working towards it.',
+                        'Each individual\'s effort is the first step to changing the world.',
+                        'I myself believe I must take actions, step by step, that bring us closer to achieving these goals for society and the world.',
+                        'Each of us is a key player in the SDGs.',
+                        'If we all work together, we might be able to save even one person suffering in the world.',
+                    ],
                 ]
             },
             // HUMAN + MT (13-16)
             {
                 id: 'humanmt1',
                 type: 'Human + MT',
-                topic: 'Hunger and child development',
-                sentences: [
-                    'Hunger is one of the largest problem in the modern world.',
-                    'Some people think that the lack of food is not directly related to development of nations, but it can be a huge obstacle for both humans and nations.',
-                    'The most critical impact of food shortages is that children unable to obtain adequate nutrition cannot grow properly.',
-                    'This results in brain damage, preventing them from becoming part of the nation\'s future workforce and undermining public safety.',
-                    'The first reason for why children are hugely affected from the lack of nutrients is that their brains are very vulnerable to the shortage of nutrients.',
-                    'In many developing nations, a large number of people die from malnutrition, and the number include so many children under five.',
-                    'These little children is hard to survive the lack of nutrients, because their brains are under development.',
-                    'If some vitamin become insufficient, the child would lose his sight.',
-                    'Therefore the lack of food and nutrients damage the brain of a child and the damage will not be cured.',
-                    'The second reason why nutritional deficiency is problematic for children is that it prevents them from becoming future workers.',
-                    'Clearly, the death of many children means a reduction in the future workforce.',
-                    'Children suffering from food shortages may also find it harder to concentrate on tasks compared to well-fed children, affecting their academic performance.',
-                    'Malnutrition prevents children from studying effectively, ultimately hindering their ability to secure well-paying jobs.',
-                    'Furthermore, this is undesirable for the nation itself, as it loses the opportunity for these children to lead the country in the future.'
+                topic: 'Hunger and brain damage',
+                level: 'CEFR B1-B2',
+                paragraphs: [
+                    [
+                        'Hunger is one of the largest problem in the modern world.',
+                        'Some people think that the lack of food is not directly related to development of nations, but it can be a huge obstacle for both humans and nations.',
+                        'The most critical impact of food shortages is that children unable to obtain adequate nutrition cannot grow properly.',
+                        'This results in brain damage, preventing them from becoming part of the nation\'s future workforce and undermining public safety.',
+                    ],
+                    [
+                        'The first reason for why children are hugely affected from the lack of nutrients is that their brains are very vulnerable to the shortage of nutrients.',
+                        'In many developing nations, a large number of people die from malnutrition, and the number include so many children under five.',
+                        'These little children is hard to survive the lack of nutrients, because their brains are under development.',
+                        'If some vitamin become insufficient, the child would lose his sight.',
+                        'Therefore the lack of food and nutrients damage the brain of a child and the damage will not be cured.',
+                    ],
+                    [
+                        'The second reason why nutritional deficiency is problematic for children is that it prevents them from becoming future workers.',
+                        'Clearly, the death of many children means a reduction in the future workforce.',
+                        'Children suffering from food shortages may also find it harder to concentrate on tasks compared to well-fed children, affecting their academic performance.',
+                        'Malnutrition prevents children from studying effectively, ultimately hindering their ability to secure well-paying jobs.',
+                        'Furthermore, this is undesirable for the nation itself, as it loses the opportunity for these children to lead the country in the future.',
+                    ],
                 ]
             },
             {
                 id: 'humanmt2',
                 type: 'Human + MT',
-                topic: 'India\'s development challenges',
-                sentences: [
-                    'India has been developing recently, but poverty still exists.',
-                    'Economic growth in India is important factor to reduce the poverty in India.',
-                    'There is air pollution too.',
-                    'The infrastructure is not developing around farming areas.',
-                    'India is one of the biggest export countries in the world, but lack of infrastructure causes it decrease.',
-                    'Big fiscal deficit is the cause of lack of infrastructure.',
-                    'One of the biggest problems of infrastructure is the problem of electric problem.',
-                    'It is difficult to spread electric ability in a short period because of fiscal deficit.',
-                    'India has a lot of labor who have high skills.',
-                    'For example, there are a lot of people who can speak English.',
-                    'Furthermore, after India\'s independence in 1947, the primary sector accounted for 60%, the secondary sector for 20%, and the tertiary sector for 20%.',
-                    'However, by 1999, the primary sector had declined to 25%, the secondary sector to 24%, and the tertiary sector had risen to 51%.',
-                    'It means that India\'s industry has changed largely.',
-                    'There are some differences of a literacy rate and income between states.',
-                    'India will develop slowly not to spread the deference of income.',
-                    'India\'s growth has been slowing recently.',
-                    'However, India possesses high potential for development.',
-                    'Personal expenses are cheap in India because there are a lot of labors.',
-                    'Preparation of infrastructure and deregulation are important to make India develop.',
-                    'Demand is high in India, but supply is low in India, so inflation rate became high in India.',
-                    'Therefore, India has to modify the supply to develop.'
+                topic: 'India development',
+                level: 'CEFR B1-B2',
+                paragraphs: [
+                    [
+                        'India has been developing recently, but poverty still exists.',
+                        'Economic growth in India is important factor to reduce the poverty in India.',
+                        'There is air pollution too.',
+                        'The infrastructure is not developing around farming areas.',
+                        'India is one of the biggest export countries in the world, but lack of infrastructure causes it decrease.',
+                        'Big fiscal deficit is the cause of lack of infrastructure.',
+                        'One of the biggest problems of infrastructure is the problem of electric problem.',
+                        'It is difficult to spread electric ability in a short period because of fiscal deficit.',
+                        'India has a lot of labor who have high skills.',
+                        'For example, there are a lot of people who can speak English.',
+                        'Furthermore, after India\'s independence in 1947, the primary sector accounted for 60%, the secondary sector for 20%, and the tertiary sector for 20%.',
+                        'However, by 1999, the primary sector had declined to 25%, the secondary sector to 24%, and the tertiary sector had risen to 51%.',
+                        'It means that India’s industry has changed largely.',
+                        'There are some differences of a literacy rate and income between states.',
+                        'India will develop slowly not to spread the deference of income.',
+                    ],
+                    [
+                        'India\'s growth has been slowing recently.',
+                        'However, India possesses high potential for development.',
+                        'Personal expenses are cheap in India because there are a lot of labors.',
+                        'Preparation of infrastructure and deregulation are important to make India develop.',
+                        'Demand is high in India, but supply is low in India, so inflation rate became high in India.',
+                        'Therefore, India has to modify the supply to develop.',
+                    ],
                 ]
             },
             {
                 id: 'humanmt3',
                 type: 'Human + MT',
                 topic: 'Corporate tax in Japan',
-                sentences: [
-                    'In 2013 fiscal year, corporate tax was account for eight percent of the general account.',
-                    'Japanese corporate tax is the second highest in developed countries, top is American.',
-                    'Corporate tax is a direct tax.',
-                    'Since taking office, Prime Minister Abe has prioritized economic policy.',
-                    'Abe\'s economic policy is often called as "Abenomics".',
-                    'Consumption tax rate shifted up to 8%.',
-                    'For consumption tax increasing, many consumers and the presidents of small and medium-size enterprises are already heavy a burden.',
-                    'Consumption tax pay for government from the owner, and consumption tax\'s burden is often heavier for owner than consumer, because many owners would not set the upper price to keep the demand for products.',
-                    'The debate over lowering corporate taxes divides economists between supporters and opponents.',
-                    'Main reason of agreement side is that corporate tax will stimulate the economy and bring about an economic boom.',
-                    'Many Japanese big companies are forced to compete the global market.',
-                    'Corporate tax cutting is expected to help the international competitiveness.',
-                    'Corporate tax is about 35% in Japan in 2014.',
-                    'To compare with foreign countries, corporate tax is about 40% in California, America.',
-                    'In France, corporate tax is about 33% in Germany.',
-                    'In Europe and America area, corporate tax is set up as same rate as Japan, however, corporate tax in Asian countries is lower than Japanese.',
-                    'For instance, corporate tax is set up 25% in China.',
-                    'In Singapore, corporate tax is 17%.',
-                    'Japan should compete with Asian countries, so corporate tax should decrease for the same rate in other Asian countries.',
-                    'Now, Singapore is succeeded with enticing of foreign companies.',
-                    'One reason cited is the low corporate tax rate.',
-                    'Japan should attract foreign companies to invest here, and Japanese companies must engage in more international competition.'
+                level: 'CEFR B1-B2',
+                paragraphs: [
+                    [
+                        'In 2013 fiscal year, corporate tax was account for eight percent of the general account.',
+                        'Japanese corporate tax is the second highest in developed countries, top is American.',
+                        'Corporate tax is a direct tax.',
+                        'Since taking office, Prime Minister Abe has prioritized economic policy.',
+                        'Abe’s economic policy is often called as “Abenomics”.',
+                        'Consumption tax rate shifted up to 8%.',
+                        'For consumption tax increasing, many consumers and the presidents of small and medium-size enterprises are already heavy a burden.',
+                        'Consumption tax pay for government from the owner, and consumption tax’s burden is often heavier for owner than consumer, because many owners would not set the upper price to keep the demand for products.',
+                    ],
+                    [
+                        'The debate over lowering corporate taxes divides economists between supporters and opponents.',
+                        'Main reason of agreement side is that corporate tax will stimulate the economy and bring about an economic boom.',
+                        'Many Japanese big companies are forced to compete the global market.',
+                        'Corporate tax cutting is expected to help the international competitiveness.',
+                        'Corporate tax is about 35% in Japan in 2014.',
+                        'To compare with foreign countries, corporate tax is about 40% in California, America.',
+                        'In France, corporate tax is about 33% in Germany.',
+                        'In Europe and America area, corporate tax is set up as same rate as Japan, however, corporate tax in Asian countries is lower than Japanese.',
+                        'For instance, corporate tax is set up 25% in China.',
+                        'In Singapore, corporate tax is 17%.',
+                        'Japan should compete with Asian countries, so corporate tax should decrease for the same rate in other Asian countries.',
+                        'Now, Singapore is succeeded with enticing of foreign companies.',
+                        'One reason cited is the low corporate tax rate.',
+                        'Japan should attract foreign companies to invest here, and Japanese companies must engage in more international competition.',
+                    ],
                 ]
             },
             {
                 id: 'humanmt4',
                 type: 'Human + MT',
-                topic: 'Population growth and food shortage',
-                sentences: [
-                    'Third challenge which the developing countries are facing because of hunger is the expected shortage of food because of rapid population growth.',
-                    'Currently, the population has been increasing rapidly, and the growth is very active in many developing countries.',
-                    'As many of less developed countries will have much larger population than now, the shortage of food supply can be highly expected in the future.',
-                    'The reason why is that even though the much progressed technology has improved the productivity of agriculture, in developing countries there are many factors which deteriorate the success such as lack of irrigation systems.',
-                    'Thus, the productivity will decrease some day in the future.',
-                    'However, the population growth has been expected to grow for very long time.',
-                    'Therefore, population growth will eventually outpace agricultural productivity, making sufficient food unavailable for everyone in the country.',
-                    'To prevent this situation, it is crucial not only to improve productivity but also to manage population growth.',
-                    'In conclusion, many developing countries are struggling with hunger, and they have multiple challenges including exploitation of food by developed countries, high child mortality rate and also the shortage of food because of rapid population growth.',
-                    'To stop people from suffering from hunger, we must seriously rethink what is causing people in certain countries to go hungry and what we can do about it.'
+                topic: 'Population growth and food',
+                level: 'CEFR B1-B2',
+                paragraphs: [
+                    [
+                        'Third challenge which the developing countries are facing because of hunger is the expected shortage of food because of rapid population growth.',
+                        'Currently, the population has been increasing rapidly, and the growth is very active in many developing countries.',
+                        'As many of less developed countries will have much larger population than now, the shortage of food supply can be highly expected in the future.',
+                        'The reason why is that even though the much progressed technology has improved the productivity of agriculture, in developing countries there are many factors which deteriorate the success such as lack of irrigation systems.',
+                        'Thus, the productivity will decrease some day in the future.',
+                        'However, the population growth has been expected to grow for very long time.',
+                        'Therefore, population growth will eventually outpace agricultural productivity, making sufficient food unavailable for everyone in the country.',
+                        'To prevent this situation, it is crucial not only to improve productivity but also to manage population growth.',
+                    ],
+                    [
+                        'In conclusion, many developing countries are struggling with hunger, and they have multiple challenges including exploitation of food by developed countries, high child mortality rate and also the shortage of food because of rapid population growth.',
+                        'To stop people from suffering from hunger, we must seriously rethink what is causing people in certain countries to go hungry and what we can do about it.',
+                    ],
                 ]
             },
             // HUMAN + LLM (17-20)
@@ -866,175 +909,241 @@
                 id: 'humanllm1',
                 type: 'Human + AI (LLM)',
                 topic: 'Consumption tax behavior',
-                sentences: [
-                    'In 2014, the Japanese government increased the consumption tax, which raised concerns about its possible negative effects on consumers.',
-                    'Many people expected that the tax increase would strongly reduce consumption and slow down the economy.',
-                    'Especially, economists predicted that consumers would change their buying behavior significantly before and after the tax increase.',
-                    'However, these things are only anticipation.',
-                    'Actually, the influence of tax increase was smaller than some researchers\' expectation.',
-                    'The reason of this phenomenon is that consumers were not interested in the tax increase so much.',
-                    'As a result, almost people did not do buying rush and stop the consumption.',
-                    'Consumers reacted to the consumption tax increase mainly in two different ways.',
-                    'There are two situations, one is the buying rush, and another is stopping consumption.',
-                    'For example, people who did do buying rush before the tax increase.',
-                    'These people tended to buy luxury goods such as house, tobacco, and home electronics.',
-                    'Luxury goods catch the big influence by tax increase because if we will buy something which so expensive goods, we want to buy cheaper goods.',
-                    'As a result, we will buy expensive goods before the tax increase.',
-                    'This means the buying rush.',
-                    'After the tax increase, some people cut their consumption.',
-                    'The government were worried about cutting down on the consumption.',
-                    'Actually, the sales of notebooks computer and television decrease about 50% sales down from March.',
-                    'Also, some stores began a sale not to decrease consumers.',
-                    'However, according to some researches, only under 30% people did the cutting down the consumption (Diamond Online, 2014).',
-                    'Therefore, although there were visible changes in consumption behavior before and after the tax increase, these reactions were limited to a relatively small group of consumers.'
+                level: 'CEFR B1-B2',
+                paragraphs: [
+                    [
+                        'In 2014, the Japanese government increased the consumption tax, which raised concerns about its possible negative effects on consumers.',
+                        'Many people expected that the tax increase would strongly reduce consumption and slow down the economy.',
+                        'Especially, economists predicted that consumers would change their buying behavior significantly before and after the tax increase.',
+                        'However, these things are only anticipation.',
+                        'Actually, the influence of tax increase was smaller than some researchers’ expectation.',
+                        'The reason of this phenomenon is that consumers were not interested in the tax increase so much.',
+                        'As a result, almost people did not do buying rush and stop the consumption.',
+                    ],
+                    [
+                        'Consumers reacted to the consumption tax increase mainly in two different ways.',
+                        'There are two situations, one is the buying rush, and another is stopping consumption.',
+                        'For example, people who did do buying rush before the tax increase.',
+                        'These people tended to buy luxury goods such as house, tobacco, and home electronics.',
+                        'Luxury goods catch the big influence by tax increase because if we will buy something which so expensive goods, we want to buy cheaper goods.',
+                        'As a result, we will buy expensive goods before the tax increase.',
+                        'This means the buying rush.',
+                        'After the tax increase, some people cut their consumption.',
+                        'The government were worried about cutting down on the consumption.',
+                        'Actually, the sales of notebooks computer and television decrease about 50% sales down from March.',
+                        'Also, some stores began a sale not to decrease consumers.',
+                        'However, according to some researches, only under 30% people did the cutting down the consumption (Diamond Online, 2014).',
+                        'Therefore, although there were visible changes in consumption behavior before and after the tax increase, these reactions were limited to a relatively small group of consumers.',
+                    ],
                 ]
             },
             {
                 id: 'humanllm2',
                 type: 'Human + AI (LLM)',
-                topic: 'Nutrition and human potential',
-                sentences: [
-                    'Secondly, the lack of development of brain is the most important effects of lack of nutrition because it limits the potential of individual.',
-                    'To choose the own future, such as where to live, where to work, what to work, is one of the rights which all people living on the earth have originally.',
-                    'However, if the person cannot have enough food and fails to learning disability caused by the lack of nutrition, the person will become not able to choose the future.',
-                    'The opportunities for studying, working, and other all experiences are limited and their potential in the future is also limited.',
-                    'Therefore, the lack of nutrition not only harms individuals physically but also takes away their freedom to realize their full potential and shape their own future.'
+                topic: 'Brain development and potential',
+                level: 'CEFR B1-B2',
+                paragraphs: [
+                    [
+                        'Secondly, the lack of development of brain is the most important effects of lack of nutrition because it limits the potential of individual.',
+                        'To choose the own future, such as where to live, where to work, what to work, is one of the rights which all people living on the earth have originally.',
+                        'However, if the person cannot have enough food and fails to learning disability caused by the lack of nutrition, the person will become not able to choose the future.',
+                        'The opportunities for studying, working, and other all experiences are limited and their potential in the future is also limited.',
+                        'Therefore, the lack of nutrition not only harms individuals physically but also takes away their freedom to realize their full potential and shape their own future.',
+                    ],
+                    [
+                        'Thirdly, the lack of development of brains is the most important effects on people and countries caused by the lack of nutrition because it prevents the development of countries.',
+                        'When many people in a country suffer from poor brain development, the number of skilled and educated workers decreases significantly.',
+                        'This results in a shortage of human resources who can contribute to economic growth, technological innovation, and effective governance.',
+                        'In addition, people with limited cognitive abilities may struggle to adapt to new technologies or solve complex problems, which slows industrial and social development.',
+                        'As a result, countries cannot compete well in the global economy and remain dependent on low-skilled labor.',
+                        'Therefore, lack of nutrition directly prevents national development by weakening the intellectual foundation of society.',
+                    ],
                 ]
             },
             {
                 id: 'humanllm3',
                 type: 'Human + AI (LLM)',
-                topic: 'Nutrition and national development',
-                sentences: [
-                    'Thirdly, the lack of development of brains is the most important effects on people and countries caused by the lack of nutrition because it prevents the development of countries.',
-                    'When many people in a country suffer from poor brain development, the number of skilled and educated workers decreases significantly.',
-                    'This results in a shortage of human resources who can contribute to economic growth, technological innovation, and effective governance.',
-                    'In addition, people with limited cognitive abilities may struggle to adapt to new technologies or solve complex problems, which slows industrial and social development.',
-                    'As a result, countries cannot compete well in the global economy and remain dependent on low-skilled labor.',
-                    'Therefore, lack of nutrition directly prevents national development by weakening the intellectual foundation of society.'
+                topic: 'Brain development and countries',
+                level: 'CEFR B1-B2',
+                paragraphs: [
+                    [
+                        'Less developed countries face many structural problems that prevent them from achieving stable economic growth.',
+                        'These problems are often deeply connected to historical, environmental, and economic conditions that are different from those of developed countries.',
+                        'Comparing to the situation in developed countries, there are some uniqueness that make the development difficult in the less developed countries.',
+                        'The most significant challenges in the less developed countries are technology, dependence on international trade, and difficulties in governance.',
+                    ],
+                    [
+                        'The first significant challenge in the less developed countries is underdeveloped technology in agriculture.',
+                        'Most of the developed countries are conducting agriculture as their primary industry; however, farmers are suffering from less developed technologies.',
+                        'In Africa, for example, there is a vast area of potential farm land.',
+                        'However, much of this farm land cannot be used efficiently because farmers lack access to modern farming tools, irrigation systems, and fertilizers.',
+                        'As a result, agricultural productivity remains low despite the large amount of available land.',
+                        'However, such difficulty has been overcome in Brazil, where its climate is dry, with the development of technology in creating new types of seeds.',
+                        'The more rapid development in agricultural technology will dramatically improve the critical situation of hunger in the less developed countries.',
+                    ],
+                    [
+                        'The second significant challenge in the less developed countries is the dependence on international trade when they earn income.',
+                        'When achieving desirable goals for domestic development, it requires a large amounts of cost such as the introduction of new technology, and much deeper scientific research toward a specific goals.',
+                        'Although the less developed countries are trying to earn more money for their fund for development, they are negatively affected by the control of developed countries in the world market.',
+                        'Because developed countries have a great monetary advantage, they have strong effect on the price making of each products especially for food.',
+                        'Therefore, many farmers in the less developed countries are suffering from unfair price of their products.',
+                        'In my opinion, unless less developed countries can reduce their dependence on unfair international trade systems while simultaneously investing in domestic technology and governance, it will remain extremely difficult for them to achieve sustainable development and escape from long-term poverty.',
+                    ],
                 ]
             },
             {
                 id: 'humanllm4',
                 type: 'Human + AI (LLM)',
-                topic: 'Challenges in less developed countries',
-                sentences: [
-                    'Less developed countries face many structural problems that prevent them from achieving stable economic growth.',
-                    'These problems are often deeply connected to historical, environmental, and economic conditions that are different from those of developed countries.',
-                    'Comparing to the situation in developed countries, there are some uniqueness that make the development difficult in the less developed countries.',
-                    'The most significant challenges in the less developed countries are technology, dependence on international trade, and difficulties in governance.',
-                    'The first significant challenge in the less developed countries is underdeveloped technology in agriculture.',
-                    'Most of the developed countries are conducting agriculture as their primary industry; however, farmers are suffering from less developed technologies.',
-                    'In Africa, for example, there is a vast area of potential farm land.',
-                    'However, much of this farm land cannot be used efficiently because farmers lack access to modern farming tools, irrigation systems, and fertilizers.',
-                    'As a result, agricultural productivity remains low despite the large amount of available land.',
-                    'However, such difficulty has been overcome in Brazil, where its climate is dry, with the development of technology in creating new types of seeds.',
-                    'The more rapid development in agricultural technology will dramatically improve the critical situation of hunger in the less developed countries.',
-                    'The second significant challenge in the less developed countries is the dependence on international trade when they earn income.',
-                    'When achieving desirable goals for domestic development, it requires a large amounts of cost such as the introduction of new technology, and much deeper scientific research toward a specific goals.',
-                    'Although the less developed countries are trying to earn more money for their fund for development, they are negatively affected by the control of developed countries in the world market.',
-                    'Because developed countries have a great monetary advantage, they have strong effect on the price making of each products especially for food.',
-                    'Therefore, many farmers in the less developed countries are suffering from unfair price of their products.',
-                    'In my opinion, unless less developed countries can reduce their dependence on unfair international trade systems while simultaneously investing in domestic technology and governance, it will remain extremely difficult for them to achieve sustainable development and escape from long-term poverty.'
+                topic: 'Agricultural technology challenges',
+                level: 'CEFR B1-B2',
+                paragraphs: [
+                    [
+                        'Secondly, slow development is very serious effect of lack of nutrition on countries.',
+                        'As I mentioned before, many children cannot be educated in developing countries.',
+                        'This is the main reasons why human resources are scarce in developing countries.',
+                        'As a result, the lack of educated and skilled workers makes it difficult for countries to develop industries, improve technology, and manage public services effectively.',
+                        'This shortage of human resources is closely connected to lack of nutrition, because malnourished children often grow into adults who cannot fully develop their physical and mental abilities.',
+                        'Therefore, poor nutrition directly limits the quality of human resources and slows down overall national development.',
+                    ],
+                    [
+                        'Thirdly, low productivity is one of the most important effects of lack of nutrition on countries.',
+                        'If people get malnutrition, they will lose their power to work hard.',
+                        'Especially poor farmers cannot continue to engage in agriculture.',
+                        'In the situation of hunger or poverty, many poor farmers leave their farmland and go to urban areas.',
+                        'In urban areas, there are generally more job opportunities which can earn more money than agricultural sector.',
+                        'Therefore, many farmers try to get better jobs by leaving their lands.',
+                        'Due to that, many farmlands are left without sufficient labour force, and the whole productivity is going to decrease.',
+                        'This will lead another problem, such as shortage of food.',
+                        'Therefore, low productivity is very important effect of lack of nutrition.',
+                    ],
+                    [
+                        'In conclusion, lack of nutrition causes serious problems such as lack of education, slow development, and low productivity, all of which prevent countries from progressing.',
+                        'In my opinion, improving access to adequate nutrition should be a top priority for developing countries, because it is the foundation for human development and long-term economic growth.',
+                    ],
                 ]
             },
-            // GRAMMARLY CORRECTED (21-24)
+            // GRAMMARLY (21-24)
             {
                 id: 'grammarly1',
                 type: 'AI-polished (Grammarly)',
-                topic: 'Nutrition effects on population and economy',
-                sentences: [
-                    'Recently, many NGOs and governments have attempted to address various global issues that impact people\'s lives.',
-                    'One of the issues is the lack of nutrition resulting from a food shortage.',
-                    'In fact, malnutrition has a significant impact on individuals and countries, affecting population, health, and economy.',
-                    'Firstly, the lack of nutrition may affect population growth, especially in developing countries, though it is not directly related.',
-                    'Many of the mothers in developing countries usually assume that their children are less likely to survive for long hours because it is difficult to feed them with nutritious foods.',
-                    'Therefore, the mothers try to give birth to many children since it has a higher possibility that more children survive until the age when they can support their parents\' living.',
-                    'As a result, the mothers give birth to children whom they do not support enough, and the high fertility causes population growth.',
-                    'Thus, the lack of nutrition causes families to miss planning their families; consequently, population growth occurs in these countries.',
-                    'Secondly, the lack of nutrition also affects the economy in developing countries.',
-                    'The lack of nutrition seems to make young people more likely to die at a young age due to malnutrition.',
-                    'The reduction of young people suggests that fewer workers who help countries\' economy and society can earn money.',
-                    'It also means less economic growth in the countries.',
-                    'Therefore, in fact, the large number of people dying due to a lack of nutrition causes less economic growth.',
-                    'It can lead many people to poverty eventually.',
-                    'Thus, the lack of nutrition affects the economy eventually in developing countries.'
+                topic: 'Malnutrition effects',
+                level: 'CEFR B1-B2',
+                paragraphs: [
+                    [
+                        'Recently, many NGOs and governments have attempted to address various global issues that impact people’s lives.',
+                        'One of the issues is the lack of nutrition resulting from a food shortage.',
+                        'In fact, malnutrition has a significant impact on individuals and countries, affecting population, health, and economy.',
+                    ],
+                    [
+                        'Firstly, the lack of nutrition may affect population growth, especially in developing countries, though it is not directly related.',
+                        'Many of the mothers in developing countries usually assume that their children are less likely to survive for long hours because it is difficult to feed them with nutritious foods.',
+                        'Therefore, the mothers try to give birth to many children since it has a higher possibility that more children survive until the age when they can support their parents’ living.',
+                        'As a result, the mothers give birth to children whom they do not support enough, and the high fertility causes population growth.',
+                        'Thus, the lack of nutrition causes families to miss planning their families; consequently, population growth occurs in these countries.',
+                    ],
+                    [
+                        'Secondly, the lack of nutrition also affects the economy in developing countries.',
+                        'The lack of nutrition seems to make young people more likely to die at a young age due to malnutrition.',
+                        'The reduction of young people suggests that fewer workers who help countries’ economy and society can earn money.',
+                        'It also means less economic growth in the countries.',
+                        'Therefore, in fact, the large number of people dying due to a lack of nutrition causes less economic growth.',
+                        'It can lead many people to poverty eventually.',
+                        'Thus, the lack of nutrition affects the economy eventually in developing countries.',
+                    ],
                 ]
             },
             {
                 id: 'grammarly2',
                 type: 'AI-polished (Grammarly)',
-                topic: 'Earphones and smartphones',
-                sentences: [
-                    'Generally speaking, earphones and headphones are regarded as just equipment of an audio player, and it is not thought important except by audiophiles, so the quality of earphones and headphones was almost the same.',
-                    'However, in the past few years, the smartphone came up into electronic industry.',
-                    'A smartphone is a mobile phone with more advanced computing capability and connectivity than basic feature phones.',
-                    'Thanks to appearing smartphone, earphones and headphones started gaining attention in electronic industry.',
-                    'I can see three economic concepts why smartphones brought the earphones and headphones boom, concept of complement, the concept of technological change, and changing people\'s taste and preference.',
-                    'Also, I would like to think about the future prospects of earphones and headphones.',
-                    'The first economic concept that I found that smartphones brought a new era of earphones and headphones is the concept of complementarity.',
-                    'When some products are complements, if one product\'s demand is increased, the other\'s demand is also increased.',
-                    'For instance, we can say bread and butter are complementary goods, and gasoline and a car are also complementary goods.',
-                    'In general, we can see that a lot of people are using earphones and headphones with smartphones, and they enjoy listening to music, watching movies, or talking with others.',
-                    'In this situation, we can say smartphone and earphone and headphones are complementary goods.',
-                    'Therefore, when the demand increased, earphones and headphones\' demand was also increased.',
-                    'Moreover, because of the development of smartphones, earphones and headphones also developed and increased their demand.'
+                topic: 'Earphones and headphones',
+                level: 'CEFR B1-B2',
+                paragraphs: [
+                    [
+                        'Generally speaking, earphones and headphones are regarded as just equipment of an audio player, and it is not thought important except by audiophiles, so the quality of earphones and headphones was almost the same.',
+                        'However, in the past few years, the smartphone came up into electronic industry.',
+                        'A smartphone is a mobile phone with more advanced computing capability and connectivity than basic feature phones.',
+                        'Thanks to appearing smartphone, earphones and headphones started gaining attention in electronic industry.',
+                        'I can see three economic concepts why smartphones brought the earphones and headphones boom, concept of complement, the concept of technological change, and changing people’s taste and preference.',
+                        'Also, I would like to think about the future prospects of earphones and headphones.',
+                    ],
+                    [
+                        'The first economic concept that I found that smartphones brought a new era of earphones and headphones is the concept of complementarity.',
+                        'When some products are complements, if one product’s demand is increased, the other’s demand is also increased.',
+                        'For instance, we can say bread and butter are complementary goods, and gasoline and a car are also complementary goods.',
+                        'In general, we can see that a lot of people are using earphones and headphones with smartphones, and they enjoy listening to music, watching movies, or talking with others.',
+                        'In this situation, we can say smartphone and earphone and headphones are complementary goods.',
+                        'Therefore, when the demand increased, earphones and headphones’ demand was also increased.',
+                        'Moreover, because of the development of smartphones, earphones and headphones also developed and increased their demand.',
+                    ],
                 ]
             },
             {
                 id: 'grammarly3',
                 type: 'AI-polished (Grammarly)',
-                topic: 'Consumption tax increase effects',
-                sentences: [
-                    'On April 1, 2014, the tax rate was increased from 5% to 8%.',
-                    'It has been 17 years since the tax rate was increased.',
-                    'This tax is the consumption tax, so everyone has to pay taxes to the government in order to keep federal revenues.',
-                    'The influence of this tax on people\'s lives has both problems and good points.',
-                    'First of all, the hiring tax is a problem for Japan because people\'s burdens naturally increase when the tax rate declines and the decline of the industry occurs.',
-                    'The consumption tax is a regressive tax.',
-                    'This is the theory that the lower income people have a greater burden than higher-income people.',
-                    'When the tax rate is increased, many people suffer from this.',
-                    'In fact, according to the Nikkei Shinbun Online, when the family receives 5~5.5 million yen per year, their burden increases by 71 thousand yen.',
-                    'Moreover, this influence goes to the industry.',
-                    'As my chosen article described the economic decline, the whole of Japan\'s economy will decline.',
-                    'Many people will stop shopping for luxury products.',
-                    'The economic flow will be worse little by little.',
-                    'Moreover, because of the lower consumption, many companies will suffer from their management.',
-                    'Then, many employees cannot receive income.',
-                    'Like this, the negative spiral will occur.',
-                    'Japan has many bonds, so this time the Japanese government only increases its burden of bonds because it cannot pay back the existing bonds.',
-                    'I thought Japan should not have increased its tax rate.',
-                    'From now on, Japan has to think their administration to be a fair society.'
+                topic: 'Consumption tax',
+                level: 'CEFR B1-B2',
+                paragraphs: [
+                    [
+                        'On April 1, 2014, the tax rate was increased from 5% to 8%.',
+                        'It has been 17 years since the tax rate was increased.',
+                        'This tax is the consumption tax, so everyone has to pay taxes to the government in order to keep federal revenues.',
+                        'The influence of this tax on people’s lives has both problems and good points.',
+                    ],
+                    [
+                        'First of all, the hiring tax is a problem for Japan because people’s burdens naturally increase when the tax rate declines and the decline of the industry occurs.',
+                        'The consumption tax is a regressive tax.',
+                        'This is the theory that the lower income people have a greater burden than higher-income people.',
+                        'When the tax rate is increased, many people suffer from this.',
+                        'In fact, according to the Nikkei Shinbun Online, when the family receives 5~5.5 million yen per year, their burden increases by 71 thousand yen.',
+                        'Moreover, this influence goes to the industry.',
+                        'As my chosen article described the economic decline, the whole of Japan\'s economy will decline.',
+                        'Many people will stop shopping for luxury products.',
+                        'The economic flow will be worse little by little.',
+                        'Moreover, because of the lower consumption, many companies will suffer from their management.',
+                        'Then, many employees cannot receive income.',
+                        'Like this, the negative spiral will occur.',
+                        'Japan has many bonds, so this time the Japanese government only increases its burden of bonds because it cannot pay back the existing bonds.',
+                        'I thought Japan should not have increased its tax rate.',
+                        'From now on, Japan has to think their administration to be a fair society.',
+                    ],
                 ]
             },
             {
                 id: 'grammarly4',
                 type: 'AI-polished (Grammarly)',
-                topic: 'Malnutrition and poverty',
-                sentences: [
-                    'From the beginning of the 21st century, every nation has been trying to eradicate poverty and improve people\'s lives.',
-                    'They made the Millennium Development Goals and have taken actions.',
-                    'However, a lot of people are still suffering from poverty and hunger.',
-                    'Especially, many children are dying because of malnutrition.',
-                    'The lack of food causes a lot of problems in people\'s lives, such as lower productivity, illnesses, and lack of education.',
-                    'First, hungry people cannot work as well as people who have enough nutrition.',
-                    'They cannot concentrate on their work, so it is difficult for them to earn lots of money.',
-                    'Even a student who did not eat breakfast only one time cannot concentrate on the activities during the day.',
-                    'He or she cannot do their best in class.',
-                    'Therefore, it is easy to imagine that the work of people who have not had enough food every day cannot be so hard.',
-                    'The income of those people will become low, so they cannot buy food and become seriously hungry.',
-                    'In addition, low productivity affects the economy of the country.',
-                    'Thus, productivity, hunger, and malnutrition are very connected.',
-                    'Second, people who are suffering from malnutrition tend to become ill easily.',
-                    'The lack of nutrition makes people\'s immune system weak, and it allows people to become ill.',
-                    'In many developing countries, many people, especially children, are suffering from diarrhea, which can be treated easily in developed countries.',
-                    'However, in some developing countries, many children die because of the disease.',
-                    'Lots of lives have been lost because of such a treatable disease.',
-                    'If those patients get enough nutrition, they would stay healthy and live long.',
-                    'Therefore, malnutrition threatens people\'s lives as infecting with diseases.'
+                topic: 'Poverty and hunger',
+                level: 'CEFR B1-B2',
+                paragraphs: [
+                    [
+                        'From the beginning of the 21st century, every nation has been trying to eradicate poverty and improve people’s lives.',
+                        'They made the Millennium Development Goals and have taken actions.',
+                        'However, a lot of people are still suffering from poverty and hunger.',
+                        'Especially, many children are dying because of malnutrition.',
+                        'The lack of food causes a lot of problems in people’s lives, such as lower productivity, illnesses, and lack of education.',
+                    ],
+                    [
+                        'First, hungry people cannot work as well as people who have enough nutrition.',
+                        'They cannot concentrate on their work, so it is difficult for them to earn lots of money.',
+                        'Even a student who did not eat breakfast only one time cannot concentrate on the activities during the day.',
+                        'He or she cannot do their best in class.',
+                        'Therefore, it is easy to imagine that the work of people who have not had enough food every day cannot be so hard.',
+                        'The income of those people will become low, so they cannot buy food and become seriously hungry.',
+                        'In addition, low productivity affects the economy of the country.',
+                        'Thus, productivity, hunger, and malnutrition are very connected.',
+                    ],
+                    [
+                        'Second, people who are suffering from malnutrition tend to become ill easily.',
+                        'The lack of nutrition makes people’s immune system weak, and it allows people to become ill.',
+                        'In many developing countries, many people, especially children, are suffering from diarrhea, which can be treated easily in developed countries.',
+                        'However, in some developing countries, many children die because of the disease.',
+                        'Lots of lives have been lost because of such a treatable disease.',
+                        'If those patients get enough nutrition, they would stay healthy and live long.',
+                        'Therefore, malnutrition threatens people’s lives as infecting with diseases.',
+                    ],
                 ]
             }
         ];
+
 
         // Passage highlighting component
         function PassageHighlighter({ passage, onHighlightChange }) {
@@ -1064,8 +1173,11 @@
                 onHighlightChange([]);
             };
 
+            // Count total sentences across all paragraphs
+            const totalSentences = passage.paragraphs.reduce((sum, para) => sum + para.length, 0);
+
             const selectAll = () => {
-                const allIndices = new Set(passage.sentences.map((_, idx) => idx));
+                const allIndices = new Set([...Array(totalSentences).keys()]);
                 setHighlighted(allIndices);
                 onHighlightChange(Array.from(allIndices));
             };
@@ -1074,7 +1186,7 @@
                 <div>
                     <div style={{ background: '#f8f5f0', padding: '16px', borderRadius: '8px', marginBottom: '16px' }}>
                         <div style={{ fontSize: '14px', color: '#7a5c4e', fontWeight: '600' }}>
-                            Topic: {passage.topic}
+                            Student Level: {passage.level} | Topic: {passage.topic}
                         </div>
                     </div>
                     <div style={{ marginBottom: '16px', padding: '16px', background: '#fff5eb', borderRadius: '8px', borderLeft: '4px solid #ff6b35' }}>
@@ -1082,31 +1194,41 @@
                             Read the passage below and complete the <strong>two</strong> tasks. Please add optional comments if you can.
                         </p>
                     </div>
-                    <h3 style={{ marginBottom: '8px' }}>
-                        <strong>1.</strong> Click on any sentences you think are machine-generated.
-                        <Tooltip text="This refers to English sentences which have been created by prompting an AI LLM (i.e. ChatGPT) or translated from Japanese using a web app (i.e. DeepL)" />
-                    </h3>
+                    <h3 style={{ marginBottom: '8px' }}><strong>1.</strong> Click on any sentences you think are machine-generated.</h3>
                     <p style={{ fontSize: '14px', color: '#7a5c4e', marginBottom: '16px', lineHeight: '1.6' }}>
-                        These are sentences which have been written by a machine (e.g. ChatGPT, Google Translate) and not by a Japanese EFL student. If the text is entirely human, leave the selection blank.
+                        These are sentences which have been written by a <span className="tooltip">machine<span className="tooltiptext">This refers to English sentences which have been created by prompting an AI LLM (i.e. ChatGPT) or translated from Japanese using a web app (i.e. DeepL)</span></span> (e.g. ChatGPT, Google Translate) and not by a Japanese EFL student. If the text is entirely human, leave the selection blank.
                     </p>
                     <div className="passage-container">
-                        {passage.sentences.map((sentence, index) => (
-                            <span key={index}>
-                                <span
-                                    className={`sentence ${highlighted.has(index) ? 'highlighted' : ''}`}
-                                    onClick={() => toggleHighlight(index)}
-                                >
-                                    {sentence}
-                                </span>
-                                {index < passage.sentences.length - 1 && ' '}
-                            </span>
-                        ))}
+                        {(() => {
+                            let globalIndex = 0;
+                            return passage.paragraphs.map((paragraph, paraIndex) => (
+                                <div key={paraIndex} style={{ 
+                                    textIndent: paraIndex === 0 ? '0' : '2em',
+                                    marginBottom: '0'
+                                }}>
+                                    {paragraph.map((sentence, sentIndex) => {
+                                        const currentIndex = globalIndex++;
+                                        return (
+                                            <span key={sentIndex}>
+                                                <span
+                                                    className={`sentence ${highlighted.has(currentIndex) ? 'highlighted' : ''}`}
+                                                    onClick={() => toggleHighlight(currentIndex)}
+                                                >
+                                                    {sentence}
+                                                </span>
+                                                {(sentIndex < paragraph.length - 1 || paraIndex < passage.paragraphs.length - 1) && ' '}
+                                            </span>
+                                        );
+                                    })}
+                                </div>
+                            ));
+                        })()}
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '16px 0', padding: '14px 20px', background: 'linear-gradient(135deg, #ffd89b 0%, #ffb347 100%)', borderRadius: '8px', border: '2px solid #ff9a56', boxShadow: '0 3px 10px rgba(255, 154, 86, 0.3)' }}>
                         <button 
                             className="secondary-button" 
                             onClick={selectAll}
-                            disabled={highlighted.size === passage.sentences.length}
+                            disabled={highlighted.size === totalSentences}
                             style={{ padding: '8px 16px', fontSize: '14px' }}
                         >
                             Select all
@@ -1126,6 +1248,7 @@
                 </div>
             );
         }
+
 
         // Main Survey App
         function SurveyApp() {
@@ -1169,7 +1292,8 @@
             const handlePassageSubmit = () => {
                 const currentPassage = selectedPassages[currentPassageIndex];
                 if (passageResponses[currentPassage.id] && 
-                    passageResponses[currentPassage.id].classification) {
+                    passageResponses[currentPassage.id].classification &&
+                    passageResponses[currentPassage.id].representative) {
                     if (currentPassageIndex < selectedPassages.length - 1) {
                         setCurrentPassageIndex(currentPassageIndex + 1);
                         window.scrollTo(0, 0);
@@ -1204,7 +1328,7 @@
 
                 // Send to Google Sheets
                 try {
-                    const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    await fetch(GOOGLE_SCRIPT_URL, {
                         method: 'POST',
                         mode: 'no-cors',
                         headers: {
@@ -1212,39 +1336,45 @@
                         },
                         body: JSON.stringify(surveyData)
                     });
-                    
-                    setPage('thankyou');
                 } catch (error) {
-                    console.error('Error submitting survey:', error);
-                    alert('There was an error submitting your response. Please try again or contact the researcher.');
+                    console.error('Error submitting:', error);
                 }
+                
+                setPage('thankyou');
             };
+
+            const currentPassage = selectedPassages[currentPassageIndex];
+            const progress = page === 'passages' ? 
+                ((currentPassageIndex + 1) / selectedPassages.length) * 100 : 0;
 
             // WELCOME PAGE
             if (page === 'welcome') {
                 return (
                     <div className="container">
-                        <h1>Can you spot machine-generated English?🤖</h1>
-                        <div className="welcome-box">
-                            <p><strong>Welcome to this pilot survey!</strong></p>
-                            <p>This survey is part of research into how well teachers can detect AI-generated or machine-translated English in student writing.</p>
+                        <h1>Can you spot machine-generated English?&#129302; - Pilot</h1>
+                        <p>This survey aims to investigate whether English language teachers in Japan can distinguish human-written from machine-generated English. In other words, can we spot whether a sentence came from a human mind or a robot?</p>
+                        
+                        <h2>What is "machine-generated English"?</h2>
+                        <p>In this survey, machine-generated English refers to sentences which have been generated using a large language model (e.g. ChatGPT, CoPilot) or machine-translation software (e.g. Google Translate, DeepL). For instance, when learners write a sentence in their L1 and ask a machine for a translation, the resulting sentence is considered to be machine-generated.</p>
+                        
+                        <h2>What are these extracts?</h2>
+                        <p>There are 6 types of extracts:</p>
+                        <ol style={{ paddingLeft: '20px', lineHeight: '1.8' }}>
+                            <li>actual student writing from the pre-AI era</li>
+                            <li>texts generated using an AI LLM (ChatGPT)</li>
+                            <li>texts translated using MT (DeepL) from a text written in Japanese by a student</li>
+                            <li>texts mixing actual student writing with AI-generated sentences and/or paragraphs</li>
+                            <li>texts mixing actual student writing with machine-translated sentences and/or paragraphs</li>
+                            <li>actual student writing which has been "polished" by following all suggestions from AI (Grammarly, free version) to remove all errors. Note that this final type of writing is considered to be mixed human/machine rather than machine-generated.</li>
+                        </ol>
+                        
+                        <p>You will be presented with 5 random extracts from a bank of 24, so you may have more than one of each type.</p>
+                        
+                        <p style={{ fontWeight: '600', marginTop: '24px' }}>Good luck!</p>
+                        
+                        <div className="button-group">
+                            <button onClick={() => setPage('demographics')}>Begin Survey →</button>
                         </div>
-                        <h2>What you'll do:</h2>
-                        <ul style={{ marginLeft: '24px', lineHeight: '2' }}>
-                            <li>Answer a few background questions</li>
-                            <li>Read 5 short English passages from Japanese university students</li>
-                            <li>For each passage, highlight sentences you think are machine-generated</li>
-                            <li>Classify the overall source of each passage</li>
-                            <li>Provide brief feedback on the survey (pilot only)</li>
-                        </ul>
-                        <h2>Time required:</h2>
-                        <p>Approximately 15-20 minutes</p>
-                        <div className="info-box">
-                            <p><strong>Note:</strong> This is a pilot test. Your feedback will help improve the survey before the full launch. Thank you for your participation!</p>
-                        </div>
-                        <button onClick={() => setPage('demographics')}>
-                            Begin Survey →
-                        </button>
                     </div>
                 );
             }
@@ -1254,112 +1384,108 @@
                 return (
                     <div className="container">
                         <h1>Background Information</h1>
-                        <div>
-                            <h3>1. What is your first language (L1)?</h3>
-                            <select 
-                                value={demographics.l1}
-                                onChange={(e) => setDemographics({...demographics, l1: e.target.value})}
-                            >
-                                <option value="">Please select...</option>
-                                <option value="English">English</option>
-                                <option value="Japanese">Japanese</option>
-                                <option value="Chinese">Chinese</option>
-                                <option value="Korean">Korean</option>
-                                <option value="Other">Other</option>
-                            </select>
-                            {demographics.l1 === 'Other' && (
-                                <input 
-                                    type="text"
-                                    placeholder="Please specify your first language"
-                                    value={demographics.l1_other}
-                                    onChange={(e) => setDemographics({...demographics, l1_other: e.target.value})}
-                                    style={{ marginTop: '12px' }}
-                                />
-                            )}
-                        </div>
                         
-                        <div>
-                            <h3>2. How much experience do you have teaching English to Japanese university students?</h3>
-                            <select 
-                                value={demographics.experience}
-                                onChange={(e) => setDemographics({...demographics, experience: e.target.value})}
-                            >
-                                <option value="">Please select...</option>
-                                <option value="None">None (I don't teach English)</option>
-                                <option value="Less than 1 year">Less than 1 year</option>
-                                <option value="1-3 years">1-3 years</option>
-                                <option value="3-5 years">3-5 years</option>
-                                <option value="5-10 years">5-10 years</option>
-                                <option value="More than 10 years">More than 10 years</option>
-                            </select>
-                        </div>
+                        <h3>What is your first language?</h3>
+                        <select 
+                            value={demographics.l1} 
+                            onChange={(e) => setDemographics({...demographics, l1: e.target.value})}
+                        >
+                            <option value="">Please select...</option>
+                            <option value="English">English</option>
+                            <option value="Japanese">Japanese</option>
+                            <option value="Other">Other (please state)</option>
+                        </select>
                         
-                        <div>
-                            <h3>3. (Optional) Any relevant background or expertise?</h3>
-                            <p style={{ fontSize: '14px', color: '#7a5c4e', margin: '8px 0' }}>
-                                e.g., applied linguistics, TESOL, language testing, AI literacy
-                            </p>
-                            <textarea 
-                                value={demographics.background}
-                                onChange={(e) => setDemographics({...demographics, background: e.target.value})}
-                                placeholder="Optional..."
+                        {demographics.l1 === 'Other' && (
+                            <input 
+                                type="text" 
+                                placeholder="Please specify your first language"
+                                style={{ marginTop: '12px' }}
+                                value={demographics.l1_other}
+                                onChange={(e) => setDemographics({...demographics, l1_other: e.target.value})}
                             />
-                        </div>
+                        )}
+                        
+                        <h3>How many years of experience do you have dealing with Japanese students' English writing?</h3>
+                        <select 
+                            value={demographics.experience} 
+                            onChange={(e) => setDemographics({...demographics, experience: e.target.value})}
+                        >
+                            <option value="">Please select...</option>
+                            <option value="I am not a teacher">I am not a teacher</option>
+                            <option value="Up to 1">Up to 1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="More than 10">More than 10</option>
+                        </select>
+                        
+                        <h3>(Optional) Do you have any other comments about your teaching background which may be helpful to this survey?</h3>
+                        <p style={{ fontSize: '14px', color: '#7a5c4e', margin: '8px 0' }}>
+                            E.g. I have only taught writing to advanced (CEFR C1) students.
+                        </p>
+                        <textarea 
+                            value={demographics.background}
+                            onChange={(e) => setDemographics({...demographics, background: e.target.value})}
+                            placeholder="Optional additional information..."
+                        />
                         
                         <div className="button-group">
-                            <button 
-                                className="secondary-button"
-                                onClick={() => setPage('welcome')}
-                            >
-                                ← Back
-                            </button>
+                            <button className="secondary-button" onClick={() => setPage('welcome')}>← Back</button>
                             <button 
                                 onClick={handleDemographicsSubmit}
                                 disabled={!demographics.l1 || !demographics.experience}
                             >
-                                Continue to Passages →
+                                Continue →
                             </button>
                         </div>
                     </div>
                 );
             }
 
-            // PASSAGE PAGE
-            if (page === 'passages' && selectedPassages.length > 0) {
-                const currentPassage = selectedPassages[currentPassageIndex];
-                const response = passageResponses[currentPassage.id] || { highlighted: [], classification: '', comment: '' };
-                const progress = ((currentPassageIndex) / selectedPassages.length) * 100;
+            // PASSAGE RATING PAGE
+            if (page === 'passages' && currentPassage) {
+                const response = passageResponses[currentPassage.id] || {
+                    highlighted: [],
+                    classification: '',
+                    representative: '',
+                    comment: ''
+                };
 
                 return (
                     <div className="container">
                         <h1>Passage {currentPassageIndex + 1} of {selectedPassages.length}</h1>
-                        <div className="progress-bar">
-                            <div className="progress-fill" style={{ width: `${progress}%` }}></div>
+                        
+                        <div className="progress">
+                            <div className="progress-bar" style={{ width: `${progress}%` }}></div>
                         </div>
                         
                         <PassageHighlighter 
                             passage={currentPassage}
-                            onHighlightChange={(highlighted) => updatePassageResponse(currentPassage.id, 'highlighted', highlighted)}
+                            onHighlightChange={(indices) => updatePassageResponse(currentPassage.id, 'highlighted', indices)}
                         />
                         
-                        <div style={{ marginTop: '32px' }}>
-                            <h3>
-                                <strong>2.</strong> How representative is this text?
-                                <Tooltip text="This means whether this text is representative of student writing practices, not just representative of actual human writing. For instance, an essay written entirely using AI is, in my experience, representative of some of my students' writing practices!" />
-                            </h3>
-                            <p style={{ fontSize: '14px', color: '#7a5c4e', margin: '8px 0 16px 0' }}>
-                                Please classify the overall source of this passage:
-                            </p>
-                            <div className="classification-options">
+                        <div>
+                            <h3><strong>2.</strong> What is your overall impression of this text?</h3>
+                            <div className="radio-group">
                                 {[
-                                    'Pure student writing',
-                                    '100% AI (LLM)',
-                                    '100% MT (Machine Translation)',
-                                    'Human + MT',
-                                    'Human + AI (LLM)',
-                                    'AI-polished (e.g. Grammarly)'
-                                ].map((option) => (
-                                    <label key={option}>
+                                    'Entirely human-written',
+                                    'Entirely generated by AI (e.g., ChatGPT, Claude)',
+                                    'Entirely machine-translated (e.g., DeepL, Google Translate)',
+                                    'Human-written with some AI-generated sentences/paragraphs',
+                                    'Human-written with some machine-translated sentences/paragraphs',
+                                    'Human-written with AI grammar/error correction only'
+                                ].map(option => (
+                                    <label 
+                                        key={option}
+                                        className={`radio-option ${response.classification === option ? 'selected' : ''}`}
+                                    >
                                         <input 
                                             type="radio"
                                             name="classification"
@@ -1367,7 +1493,7 @@
                                             checked={response.classification === option}
                                             onChange={(e) => updatePassageResponse(currentPassage.id, 'classification', e.target.value)}
                                         />
-                                        <span>{option}</span>
+                                        {option}
                                     </label>
                                 ))}
                             </div>
@@ -1381,6 +1507,26 @@
                                 onChange={(e) => updatePassageResponse(currentPassage.id, 'comment', e.target.value)}
                                 placeholder="Optional comments..."
                             />
+                        </div>
+                        
+                        <div>
+                            <h3>In your view, how <span className="tooltip">representative<span className="tooltiptext">This means whether this text is representative of student writing practices, not just representative of actual human writing. For instance, an essay written entirely using AI is, in my experience, representative of some of my students' writing practices!</span></span> is the extract above of actual student writing practices (including cheating)?</h3>
+                            <div className="likert-scale">
+                                {['Very representative', 'Representative', 'Somewhat representative', 'Somewhat unrepresentative', 'Unrepresentative', 'Not at all representative'].map((option) => (
+                                    <div key={option} className="likert-option">
+                                        <input 
+                                            type="radio"
+                                            name={`representative_${currentPassage.id}`}
+                                            value={option}
+                                            checked={response.representative === option}
+                                            onChange={(e) => updatePassageResponse(currentPassage.id, 'representative', e.target.value)}
+                                        />
+                                        <label onClick={() => updatePassageResponse(currentPassage.id, 'representative', option)}>
+                                            {option}
+                                        </label>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                         
                         <div className="button-group">
@@ -1399,7 +1545,7 @@
                             </button>
                             <button 
                                 onClick={handlePassageSubmit}
-                                disabled={!response.classification}
+                                disabled={!response.classification || !response.representative}
                             >
                                 {currentPassageIndex < selectedPassages.length - 1 ? 'Next Passage →' : 'Continue to Feedback →'}
                             </button>
@@ -1425,10 +1571,7 @@
                             placeholder="Describe any technical issues, or leave blank if none..."
                         />
                         
-                        <h3>
-                            2. How representative did you feel the extracts were of actual student writing practices (including cheating)?
-                            <Tooltip text="This means whether this text is representative of student writing practices, not just representative of actual human writing. For instance, an essay written entirely using AI is, in my experience, representative of some of my students' writing practices!" />
-                        </h3>
+                        <h3>2. How representative did you feel the extracts were of actual student writing practices (including cheating)?</h3>
                         <div className="likert-scale">
                             {['Very representative', 'Representative', 'Somewhat representative', 'Somewhat unrepresentative', 'Unrepresentative', 'Not at all representative'].map((option) => (
                                 <div key={option} className="likert-option">
@@ -1446,10 +1589,7 @@
                             ))}
                         </div>
                         
-                        <h3>
-                            3. Based on the description in this survey, which of these cases would involve the use of machine-generated English?
-                            <Tooltip text="This refers to English sentences which have been created by prompting an AI LLM (i.e. ChatGPT) or translated from Japanese using a web app (i.e. DeepL)" />
-                        </h3>
+                        <h3>3. Based on the description in this survey, which of these cases would involve the use of machine-generated English?</h3>
                         <p style={{ fontSize: '14px', color: '#7a5c4e', margin: '8px 0' }}>
                             (Select all that apply)
                         </p>
@@ -1493,25 +1633,28 @@
                             <option value="25-30 minutes">25-30 minutes</option>
                             <option value="30+ minutes">30+ minutes</option>
                         </select>
-
-                        <div className="disclaimer-box">
-                            <p>Some English texts in this survey are translations of prize-winning essays originally written in Japanese for the "International Understanding and International Cooperation Essay Contest" (主催:公益財団法人 日本ユニセフ協会等). The original essays are publicly available online.</p>
-                        </div>
-
-                        <h3>5. If you would like to be contacted when the full survey is completed (including the answers and a comparison with AI!), please leave your email address.</h3>
-                        <input 
-                            type="email"
-                            value={reflection.email}
-                            onChange={(e) => setReflection({...reflection, email: e.target.value})}
-                            placeholder="Optional email address"
-                        />
                         
-                        <h3>6. Do you have any other comments or suggestions regarding this survey?</h3>
+                        <h3>5. Do you have any other comments or suggestions regarding this survey?</h3>
                         <textarea 
                             value={reflection.feedback}
                             onChange={(e) => setReflection({...reflection, feedback: e.target.value})}
                             placeholder="Your feedback and suggestions..."
                         />
+                        
+                        <h3>If you would like to be contacted when the full survey is completed (including the answers and a comparison with AI checkers!), please leave your email address.</h3>
+                        <input 
+                            type="email"
+                            value={reflection.email || ''}
+                            onChange={(e) => setReflection({...reflection, email: e.target.value})}
+                            placeholder="your.email@example.com (optional)"
+                            style={{ width: '100%', padding: '12px', fontSize: '14px', border: '1px solid #ddd', borderRadius: '4px' }}
+                        />
+                        
+                        <div style={{ background: '#fff5eb', padding: '16px', margin: '20px 0', borderRadius: '4px', borderLeft: '4px solid #ff6b35' }}>
+                            <p style={{ marginBottom: '0', fontSize: '14px', color: '#7a5c4e', lineHeight: '1.6' }}>
+                                Some English texts in this survey are translations of prize-winning essays originally written in Japanese for the "International Understanding and International Cooperation Essay Contest" (主催:公益財団法人 日本ユニセフ協会等). The original essays are publicly available online.
+                            </p>
+                        </div>
                         
                         <div className="button-group">
                             <button 
